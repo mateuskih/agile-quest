@@ -37,6 +37,21 @@ const AdventureGame: React.FC = () => {
 
   // Handle choice selection
   const handleChoiceSelect = (nextNodeId: string) => {
+    // Se o próximo nó é 'start', resetar tudo
+    if (nextNodeId === 'start') {
+      clearFeedbacks();
+      setGameState({
+        currentNodeId: 'start',
+        history: ['start'],
+        isSuccess: null,
+        isFailure: null,
+        feedbacks: [],
+        showFeedbackModal: false,
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     const currentNode = storyData[gameState.currentNodeId];
     
     setGameState((prev) => {
