@@ -61,7 +61,7 @@ const AdventureGame: React.FC = () => {
         history: [...prev.history, nextNodeId],
         isSuccess: isSuccessNode(nextNodeId),
         isFailure: isFailureNode(nextNodeId),
-        showFeedbackModal: true, // Mostrar modal de feedback após cada escolha
+        showFeedbackModal: false, // Não mostrar modal automaticamente
       };
       return newState;
     });
@@ -79,6 +79,11 @@ const AdventureGame: React.FC = () => {
   // Handle feedback modal close
   const handleFeedbackClose = () => {
     setGameState(prev => ({ ...prev, showFeedbackModal: false }));
+  };
+
+  // Handle opening feedback modal manually
+  const handleOpenFeedback = () => {
+    setGameState(prev => ({ ...prev, showFeedbackModal: true }));
   };
 
   // Reset game and clear feedbacks
@@ -119,6 +124,18 @@ const AdventureGame: React.FC = () => {
             isChoiceAvailable={isChoiceAvailable}
             getPositiveFeedbackCount={getPositiveFeedbackCount}
           />
+        )}
+        
+        {/* Botão opcional para dar feedback */}
+        {gameState.history.length > 1 && !gameState.isSuccess && !gameState.isFailure && (
+          <div className="mt-4 text-center">
+            <button
+              onClick={handleOpenFeedback}
+              className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-sm"
+            >
+              💭 Dar feedback sobre esta decisão
+            </button>
+          </div>
         )}
       </div>
       
