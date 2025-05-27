@@ -1,3 +1,4 @@
+
 import { StoryGraph } from "../types/game";
 
 export const scrum: StoryGraph = {
@@ -10,7 +11,13 @@ export const scrum: StoryGraph = {
     choices: [
       { text: "Product Owner", next: "scrum-po-1" },
       { text: "Scrum Master", next: "scrum-sm-1" },
-      { text: "Developer", next: "scrum-dev-1" }
+      { text: "Developer", next: "scrum-dev-1" },
+      { 
+        text: "🔥 Agile Coach (Modo Especialista)", 
+        next: "scrum-coach-1", 
+        requiredPositiveFeedback: 3,
+        requiredTag: "leadership"
+      }
     ]
   },
 
@@ -24,6 +31,7 @@ export const scrum: StoryGraph = {
       "• Há um bug crítico em produção.",
       "Qual estratégia de priorização?"
     ].join("\n"),
+    tag: "prioritization",
     choices: [
       { text: "Negociar prazo maior p/ relatório e priorizar bug", next: "scrum-po-bug-path" },
       { text: "Reunir time p/ estimativas criteriosas", next: "scrum-po-estimate-path" },
@@ -37,6 +45,7 @@ export const scrum: StoryGraph = {
       "O time corrige o bug mas encontra efeito colateral em outro módulo.",
       "Como você reage?"
     ].join("\n"),
+    tag: "crisis-management",
     choices: [
       { text: "Alocar dois devs p/ investigação paralela", next: "scrum-po-bug-success" },
       { text: "Suspender correção adjacente", next: "scrum-po-fail-critical" },
@@ -50,6 +59,7 @@ export const scrum: StoryGraph = {
       "Bug e efeito colateral resolvidos sem impactos maiores.",
       "Cliente elogia a transparência e confiança do time aumenta."
     ].join("\n"),
+    tag: "leadership",
     choices: [{ text: "Planejar próxima sprint", next: "scrum-success-total" }]
   },
   "scrum-po-bug-emergency": {
@@ -87,6 +97,7 @@ export const scrum: StoryGraph = {
       "História dividida em três sub-histórias claras.",
       "Time identifica dependências e ajusta estimativas."
     ].join("\n"),
+    tag: "planning",
     choices: [
       { text: "Registrar e iniciar sprint", next: "scrum-success-total" },
       { text: "Rever escopo c/ cliente", next: "scrum-po-estimate-success" }
@@ -106,6 +117,7 @@ export const scrum: StoryGraph = {
       "Matriz impacto/esforço aplicada; prioridades claras.",
       "Stakeholders aprovam transparência."
     ].join("\n"),
+    tag: "strategic-thinking",
     choices: [
       { text: "Entregas semanais incrementais", next: "scrum-po-balanced-success" },
       { text: "Ignorar pressão externa", next: "scrum-po-fail-light" },
@@ -115,6 +127,7 @@ export const scrum: StoryGraph = {
   "scrum-po-balanced-success": {
     id: "scrum-po-balanced-success",
     text: ["Cliente confiante; time sustentável; dívida técnica reduzida."].join("\n"),
+    tag: "leadership",
     choices: [{ text: "Sprint concluído com retrospectiva", next: "scrum-success-total" }]
   },
   "scrum-po-fail-light": {
@@ -137,6 +150,7 @@ export const scrum: StoryGraph = {
       "Como Scrum Master, você presencia conflito intenso entre devs.",
       "Sprint atrasado e tensão crescente."
     ].join("\n"),
+    tag: "conflict-resolution",
     choices: [
       { text: "Facilitar reunião de conflitos", next: "scrum-sm-mediation" },
       { text: "Ignorar conflito", next: "scrum-sm-fail-light" },
@@ -150,6 +164,7 @@ export const scrum: StoryGraph = {
       "Você aplica escuta ativa, mapeia causas e documenta acordos.",
       "Um dev resiste à mediação."
     ].join("\n"),
+    tag: "leadership",
     choices: [
       { text: "Validar acordos e seguir", next: "scrum-sm-mediation-success" },
       { text: "Interromper mediação", next: "scrum-sm-fail-light" },
@@ -159,6 +174,7 @@ export const scrum: StoryGraph = {
   "scrum-sm-mediation-success": {
     id: "scrum-sm-mediation-success",
     text: ["Time adota solução híbrida; clima melhora e fluxo restaura."].join("\n"),
+    tag: "leadership",
     choices: [{ text: "Conduzir retrospectiva", next: "scrum-success-total" }]
   },
   "scrum-sm-expert": {
@@ -192,6 +208,7 @@ export const scrum: StoryGraph = {
       "Como Developer, você enfrenta builds quebrados e deploys manuais.",
       "Como melhorar a entrega?"
     ].join("\n"),
+    tag: "technical-excellence",
     choices: [
       { text: "Configurar pipeline CI/CD", next: "scrum-dev-ci-path" },
       { text: "Automatizar testes unitários", next: "scrum-dev-test-path" },
@@ -217,6 +234,7 @@ export const scrum: StoryGraph = {
       "Pipeline verde! Deploys fluem sem intervenção manual.",
       "Time ganha confiança."
     ].join("\n"),
+    tag: "technical-excellence",
     choices: [{ text: "Compartilhar e treinar time", next: "scrum-success-total" }]
   },
   "scrum-dev-test-path": {
@@ -251,6 +269,47 @@ export const scrum: StoryGraph = {
     text: ["Código quebrado em produção e rollback necessário."].join("\n"),
     choices: [{ text: "Tentar novamente", next: "scrum-role" }]
   },
+
+  // --- Agile Coach (Desbloqueado por feedbacks) ---
+  "scrum-coach-1": {
+    id: "scrum-coach-1",
+    text: [
+      "🔥 Como Agile Coach, você tem acesso a práticas avançadas!",
+      "A organização quer implementar Scrum em escala. Qual sua estratégia?"
+    ].join("\n"),
+    tag: "coaching",
+    choices: [
+      { text: "Implementar SAFe framework", next: "scrum-coach-safe" },
+      { text: "Começar com Scrum of Scrums", next: "scrum-coach-scrums" },
+      { 
+        text: "🎯 Customizar framework próprio", 
+        next: "scrum-coach-custom",
+        requiredPositiveFeedback: 2,
+        requiredTag: "strategic-thinking"
+      }
+    ]
+  },
+  "scrum-coach-safe": {
+    id: "scrum-coach-safe",
+    text: ["SAFe implementado mas equipes resistem à burocracia."].join("\n"),
+    choices: [
+      { text: "Simplificar processos", next: "scrum-success-total" },
+      { text: "Manter SAFe integral", next: "scrum-success-partial" }
+    ]
+  },
+  "scrum-coach-scrums": {
+    id: "scrum-coach-scrums",
+    text: ["Scrum of Scrums funciona bem; times colaboram efetivamente."].join("\n"),
+    tag: "leadership",
+    choices: [{ text: "Expandir para mais times", next: "scrum-success-total" }]
+  },
+  "scrum-coach-custom": {
+    id: "scrum-coach-custom",
+    text: ["Framework customizado perfeito para a organização!"].join("\n"),
+    tag: "innovation",
+    choices: [{ text: "Documentar e evangelizar", next: "scrum-success-total" }]
+  },
+
   "scrum-success-partial": {
     id: "scrum-success-partial",
     text: ["Sucesso parcial: melhorias aplicadas, mas há refinamentos."].join("\n"),

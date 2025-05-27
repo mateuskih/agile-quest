@@ -3,30 +3,46 @@ import React from 'react';
 
 interface GameHeaderProps {
   history: string[];
+  onReset?: () => void;
+  feedbackCount?: number;
+  positiveFeedbackCount?: number;
 }
 
-const GameHeader: React.FC<GameHeaderProps> = ({ history }) => {
+const GameHeader: React.FC<GameHeaderProps> = ({ 
+  history, 
+  onReset,
+  feedbackCount = 0,
+  positiveFeedbackCount = 0
+}) => {
   return (
-    <header className="mb-8">
-      <div className="flex flex-col items-center mb-6">
-        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-quest-gradient mb-2">
+    <div className="w-full max-w-2xl mb-6">
+      <div className="text-center mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-2">
           Agile Quest
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300">
-          Uma jornada pelas metodologias ágeis
+        <p className="text-gray-600 text-lg">
+          Aventura Interativa sobre Metodologias Ágeis
         </p>
       </div>
       
-      {history.length > 1 && (
-        <div className="flex justify-center">
-          <div className="bg-white dark:bg-gray-800 rounded-full px-4 py-1 shadow-sm border border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Decisões: {history.length - 1}
-            </p>
-          </div>
+      <div className="flex flex-wrap justify-between items-center bg-white rounded-lg shadow-sm p-4 mb-4">
+        <div className="flex items-center space-x-4 text-sm text-gray-600">
+          <span>Decisões: {history.length - 1}</span>
+          <span>Feedbacks: {feedbackCount}</span>
+          <span className="text-green-600">👍 {positiveFeedbackCount}</span>
+          <span className="text-red-600">👎 {feedbackCount - positiveFeedbackCount}</span>
         </div>
-      )}
-    </header>
+        
+        {onReset && (
+          <button
+            onClick={onReset}
+            className="text-sm text-red-600 hover:text-red-800 transition-colors"
+          >
+            Resetar Progresso
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 
