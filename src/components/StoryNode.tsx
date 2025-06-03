@@ -32,9 +32,31 @@ const StoryNode: React.FC<StoryNodeProps> = ({
 
   const isEndNode = isSuccess || isFailure;
 
+  // Função para renderizar texto com formatação
+  const renderFormattedText = (text: string) => {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 p-3 rounded mt-2 mb-2 overflow-x-auto"><code>$1</code></pre>')
+      .replace(/`(.*?)`/g, '<code class="bg-gray-100 px-1 rounded">$1</code>')
+      .replace(/• (.*?)(?=\n|$)/g, '<li>$1</li>')
+      .replace(/(\n|^)([^•\n].*?):/g, '$1<strong>$2:</strong>')
+      .split('\n')
+      .map(line => {
+        if (line.trim() === '') return '<br>';
+        if (line.includes('<li>')) return line;
+        return `<p class="mb-2">${line}</p>`;
+      })
+      .join('')
+      .replace(/(<li>.*<\/li>)/g, '<ul class="list-disc list-inside ml-4 mb-2">$1</ul>');
+  };
+
   return (
     <div className={nodeClass}>
-      <div className="story-text">{node.text}</div>
+      <div 
+        className="story-text"
+        dangerouslySetInnerHTML={{ __html: renderFormattedText(node.text) }}
+      />
       
       {/* Explicação detalhada para nós finais */}
       {isEndNode && node.explanation && (
@@ -42,7 +64,10 @@ const StoryNode: React.FC<StoryNodeProps> = ({
           <h3 className="font-semibold text-gray-800 mb-2">
             {isSuccess ? "🎯 Por que esta foi uma boa decisão:" : "❌ Por que esta decisão não foi ideal:"}
           </h3>
-          <div className="text-gray-700 whitespace-pre-line">{node.explanation}</div>
+          <div 
+            className="text-gray-700"
+            dangerouslySetInnerHTML={{ __html: renderFormattedText(node.explanation) }}
+          />
         </div>
       )}
 
