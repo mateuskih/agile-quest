@@ -1,12 +1,13 @@
+
 import { StoryGraph } from "../types/game";
 import { start } from "./start";
-import { scrum } from "./scrum";
+import { scrumDetailed } from "./scrum-detailed";
 import { kanban } from "./kanban";
 import { xp } from "./xp";
 
 export const storyData: StoryGraph = {
   ...start,
-  ...scrum,
+  ...scrumDetailed,
   ...kanban,
   ...xp
 };

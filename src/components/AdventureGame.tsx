@@ -123,10 +123,11 @@ const AdventureGame: React.FC = () => {
             isFailure={gameState.isFailure}
             isChoiceAvailable={isChoiceAvailable}
             getPositiveFeedbackCount={getPositiveFeedbackCount}
+            onOpenFeedback={handleOpenFeedback}
           />
         )}
         
-        {/* Botão opcional para dar feedback */}
+        {/* Botão opcional para dar feedback durante o jogo */}
         {gameState.history.length > 1 && !gameState.isSuccess && !gameState.isFailure && (
           <div className="mt-4 text-center">
             <button
@@ -140,9 +141,9 @@ const AdventureGame: React.FC = () => {
       </div>
       
       <FeedbackModal
-        isOpen={gameState.showFeedbackModal && previousNodeId !== undefined}
-        nodeId={previousNodeId || ''}
-        nodeTag={previousNodeId ? storyData[previousNodeId]?.tag : undefined}
+        isOpen={gameState.showFeedbackModal && (previousNodeId !== undefined || gameState.isSuccess || gameState.isFailure)}
+        nodeId={gameState.isSuccess || gameState.isFailure ? gameState.currentNodeId : (previousNodeId || '')}
+        nodeTag={gameState.isSuccess || gameState.isFailure ? currentNode?.tag : (previousNodeId ? storyData[previousNodeId]?.tag : undefined)}
         onSubmit={handleFeedbackSubmit}
         onClose={handleFeedbackClose}
       />

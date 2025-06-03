@@ -11,6 +11,8 @@ export interface StoryNode {
   text: string;
   choices: Choice[];
   tag?: string; // Tag para categorizar o tipo de decisão
+  explanation?: string; // Explicação detalhada do resultado
+  references?: string[]; // Referências aos manuais oficiais
 }
 
 export interface StoryGraph {
