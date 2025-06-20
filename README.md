@@ -52,7 +52,7 @@ E muita gente joga os antigos até hoje, por nostalgia ou curiosidade geek.
 
 ---
 
-### [📌] Indicação
+### [↗️] Indicação!
 
 Uma comunidade ainda ativa nos dias atuais é a [textadventures.co.uk](textadventures.co.uk)
 
@@ -72,7 +72,9 @@ Este projeto busca unir o retrô e o moderno:
 
 Enquanto todo mundo está focado em dashboards com gráficos coloridos e IA generativa, aqui a ideia é dar um passo atrás e perguntar: Você realmente entende os princípios por trás do Agile?
 
-## Considerações sobre o Projeto
+---
+
+# Considerações sobre o Projeto
 
 ### Lovable
 O projeto, por experimentação (e com muita metalinguagem) utilizará LLMs, sobretudo de uma plataforma / ferramenta com IA chamada [Lovable](https://lovable.dev/), a qual permite a integração direta com um repositório do GitHub através de uma API e *botting*.
@@ -109,7 +111,7 @@ npm i
 npm run dev
 ```
 
-## [🚀] Tecnologias Utilizadas
+## [🔧] Tecnologias Utilizadas
 
 Esse projeto foi construído com:
 - Vite
@@ -123,7 +125,7 @@ Esse projeto foi construído com:
 Projeto em desenvolvimento / aprendizado / nostalgia 😄
 ~~~
 
-## Referências
+## [📌] Referências
 
 1. [Wikipedia - Text-based game](https://en.wikipedia.org/wiki/Text-based_game)
 2. [Documentação | Lovable](https://docs.lovable.dev/introduction)
