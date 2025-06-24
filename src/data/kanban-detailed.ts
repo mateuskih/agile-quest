@@ -4,162 +4,293 @@ import { StoryGraph } from "../types/game";
 export const kanbanDetailed: StoryGraph = {
   "kanban-role": {
     id: "kanban-role",
-    text: `<strong>Projeto Real: Plataforma de Atendimento ao Cliente</strong><br>
-Sua equipe gerencia um sistema de tickets de suporte com Kanban.<br>
-Estado atual: 150 tickets em andamento, 12 desenvolvedores, tempo de ciclo médio de 8 dias.<br>
-Qual papel você assume neste desafio?`,
-    choices: [
-      { text: "Líder de Equipe", next: "kanban-lead-specific-1" },
-      { text: "Membro do Time", next: "kanban-member-specific-1" },
-      { text: "Analista de Processo", next: "kanban-analyst-specific-1" }
-    ]
-  },
-
-  // === LÍDER DE EQUIPE - CENÁRIO ESPECÍFICO ===
-  "kanban-lead-specific-1": {
-    id: "kanban-lead-specific-1",
-    text: `<strong>Crise de WIP Alto - Segunda-feira, 9h</strong><br>
-Você chega e vê o quadro Kanban:<br><br>
+    text: `<strong>Projeto Real: Sistema de Atendimento ao Cliente</strong><br>
+Uma empresa de tecnologia está enfrentando problemas com seu sistema de tickets de suporte. O time de 12 pessoas precisa gerenciar 200+ tickets por semana, mas o processo atual está caótico: tickets ficam perdidos, prioridades não são claras, e clientes reclamam de lentidão no atendimento.<br><br>
 <strong>Situação atual:</strong><br>
-• To Do: 45 tickets<br>
-• Em Análise: 12 tickets (WIP: 8)<br>
-• Em Desenvolvimento: 18 tickets (WIP: 10)<br>
-• Em Teste: 15 tickets (WIP: 6)<br>
-• Code Review: 8 tickets<br>
-• Done: 3 tickets na semana<br><br>
-<strong>Problema:</strong> Analistas sobrecarregados, desenvolvedores ociosos esperando especificações.<br>
-<strong>Sua ação imediata:</strong>`,
-    tag: "wip-management",
+• Backlog: 300 tickets não organizados<br>
+• Lead time médio: 15 dias<br>
+• 40% dos tickets precisam ser refeitos<br>
+• Time trabalha sem visibilidade do fluxo<br><br>
+Você foi chamado para implementar Kanban. Qual papel você assume?`,
     choices: [
-      { text: "Implementar WIP rígido de 5 em Análise", next: "kanban-lead-wip-rigid" },
-      { text: "Realocar 2 devs para apoiar análise", next: "kanban-lead-reallocation" },
-      { text: "Criar política pull entre colunas", next: "kanban-lead-pull-policy" },
-      { text: "Adiar novos tickets até estabilizar", next: "kanban-lead-defer-fail" }
+      { text: "Facilitador/Coach Kanban", next: "kanban-coach-start" },
+      { text: "Membro da Equipe", next: "kanban-member-start" },
+      { text: "Gerente de Produto", next: "kanban-manager-start" }
     ]
   },
 
-  "kanban-lead-wip-rigid": {
-    id: "kanban-lead-wip-rigid",
-    text: `<strong>Implementação de WIP Rígido</strong><br>
-WIP de 5 em Análise forçou bloqueio de novos tickets.<br><br>
-<strong>Resultado Day 3:</strong><br>
-• Análise mais focada, qualidade subiu<br>
-• Stakeholders reclamam de lentidão<br>
-• 2 bugs críticos descobertos na análise mais detalhada<br><br>
-<strong>Stakeholder questiona:</strong> 'Por que estamos mais lentos?'<br>
+  // === JORNADA DO COACH KANBAN ===
+  "kanban-coach-start": {
+    id: "kanban-coach-start",
+    text: `<strong>Dia 1 - Diagnóstico Inicial</strong><br>
+Como Coach Kanban, você precisa entender o fluxo atual antes de implementar mudanças.<br><br>
+<strong>Observações da manhã:</strong><br>
+• Desenvolvedores pegam tickets aleatoriamente<br>
+• QA tem fila de 25 tickets esperando<br>
+• Stakeholders interrompem constantemente o trabalho<br>
+• Ninguém sabe quantos tickets cada pessoa está fazendo<br><br>
+<strong>Conversa com o gerente:</strong><br>
+"Precisamos de mais velocidade! O time está lento!"<br><br>
+<strong>Sua primeira ação como Coach:</strong>`,
+    tag: "kanban-diagnosis",
+    choices: [
+      { text: "Mapear o fluxo atual com value stream mapping", next: "kanban-coach-mapping" },
+      { text: "Implementar quadro Kanban imediatamente", next: "kanban-coach-hasty" },
+      { text: "Treinar o time em teoria Kanban primeiro", next: "kanban-coach-theory" },
+      { text: "Estabelecer métricas de performance", next: "kanban-coach-metrics" }
+    ]
+  },
+
+  "kanban-coach-mapping": {
+    id: "kanban-coach-mapping",
+    text: `<strong>Sessão de Value Stream Mapping</strong><br>
+Você reuniu todo o time para mapear o fluxo atual de trabalho.<br><br>
+<strong>Descobertas importantes:</strong><br>
+• Ticket fica 3 dias em "Análise" (apenas 30min de trabalho real)<br>
+• Desenvolvimento: 2 dias de trabalho, 5 dias de espera<br>
+• QA: 1 dia de teste, 4 dias na fila<br>
+• 60% do tempo é desperdício (waiting)<br><br>
+<strong>Time reage:</strong><br>
+"Nossa, eu não sabia que meu trabalho ficava parado tanto tempo!"<br><br>
+<strong>Próximo passo:</strong>`,
+    tag: "process-improvement",
+    choices: [
+      { text: "Criar quadro Kanban baseado no fluxo mapeado", next: "kanban-coach-board" },
+      { text: "Definir WIP limits para cada etapa", next: "kanban-coach-wip" },
+      { text: "Implementar daily standup primeiro", next: "kanban-coach-daily" }
+    ]
+  },
+
+  "kanban-coach-board": {
+    id: "kanban-coach-board",
+    text: `<strong>Implementação do Quadro Kanban</strong><br>
+Baseado no value stream mapping, você criou um quadro com as colunas:<br>
+<strong>Backlog → Análise → Desenvolvimento → Code Review → Teste → Deploy → Done</strong><br><br>
+<strong>Semana 1 - Resultados:</strong><br>
+• Visibilidade total do trabalho em andamento<br>
+• Time identifica gargalos facilmente<br>
+• Mas... muitos tickets ainda ficam "presos" em certas colunas<br><br>
+<strong>Observação crítica:</strong><br>
+Coluna "Teste" tem 15 tickets, "Desenvolvimento" tem apenas 3.<br><br>
+<strong>Sua intervenção:</strong>`,
+    tag: "bottleneck-management",
+    choices: [
+      { text: "Implementar WIP limit de 5 na coluna Teste", next: "kanban-coach-wip-success" },
+      { text: "Contratar mais testadores", next: "kanban-coach-hire-fail" },
+      { text: "Mover desenvolvedores para ajudar em testes", next: "kanban-coach-cross-training" },
+      { text: "Criar subcoluna 'Waiting for Test'", next: "kanban-coach-subcol" }
+    ]
+  },
+
+  "kanban-coach-wip-success": {
+    id: "kanban-coach-wip-success",
+    text: `<strong>WIP Limits Transformam o Fluxo</strong><br>
+WIP limit de 5 em "Teste" forçou mudanças comportamentais importantes.<br><br>
+<strong>Mês 1 - Resultados:</strong><br>
+• Desenvolvedores param de começar novos tickets quando Teste está cheio<br>
+• Time começa a colaborar para resolver gargalos<br>
+• Lead time cai de 15 para 8 dias<br>
+• Qualidade melhora: menos tickets voltam para correção<br><br>
+<strong>Feedback do time:</strong><br>
+"No início foi frustrante não poder pegar novo trabalho, mas agora entendemos que terminar é mais importante que começar."<br><br>
+<strong>Próximo desafio - Stakeholder reclama:</strong><br>
+"Vocês estão entregando menos tickets por semana!"`,
+    tag: "stakeholder-education",
+    choices: [
+      { text: "Mostrar métricas de lead time e qualidade", next: "kanban-coach-metrics-success" },
+      { text: "Aumentar temporariamente o WIP", next: "kanban-coach-compromise" },
+      { text: "Explicar teoria do throughput vs WIP", next: "kanban-coach-theory-success" }
+    ]
+  },
+
+  "kanban-coach-metrics-success": {
+    id: "kanban-coach-metrics-success",
+    text: `<strong>O Poder das Métricas</strong><br>
+Você apresentou dashboard com dados convincentes:<br><br>
+<strong>Métricas Before/After Kanban:</strong><br>
+• Lead Time: 15 dias → 8 dias (-47%)<br>
+• Throughput: 12 tickets/semana → 18 tickets/semana (+50%)<br>
+• Retrabalho: 40% → 15% (-62%)<br>
+• Satisfação do cliente: 3.2 → 4.1 (+28%)<br><br>
+<strong>Stakeholder:</strong> "Impressionante! Como conseguiram melhorar velocidade E qualidade?"<br><br>
+<strong>6 meses depois:</strong><br>
+Sistema Kanban está consolidado. Time pede para implementar em outros projetos.`,
+    explanation: `Excelente execução dos princípios fundamentais do Kanban:<br><br>
+• <strong>Visualizar o trabalho</strong> - quadro tornou fluxo transparente<br>
+• <strong>Limitar WIP</strong> - reduziu multitasking e melhorou foco<br>
+• <strong>Gerenciar fluxo</strong> - métricas guiaram decisões<br>
+• <strong>Tornar políticas explícitas</strong> - WIP limits claros para todos<br>
+• <strong>Ciclos de feedback</strong> - dados para melhoria contínua<br>
+• <strong>Melhorar colaborativamente</strong> - time evoluiu junto<br><br>
+Esta implementação demonstra maturidade Kanban: começar com o que existe, evoluir incrementalmente, e usar dados para guiar decisões. O foco em métricas de fluxo (lead time, throughput) ao invés de apenas velocidade mostra entendimento profundo do método.`,
+    references: [
+      "Kanban Method - David Anderson: 6 práticas fundamentais",
+      "Actionable Agile Metrics - Daniel Vacanti: métricas de fluxo",
+      "Kanban Maturity Model - evolução incremental baseada em dados"
+    ],
+    choices: [{ text: "Jogar novamente", next: "start" }]
+  },
+
+  // === JORNADA DO MEMBRO DA EQUIPE ===
+  "kanban-member-start": {
+    id: "kanban-member-start",
+    text: `<strong>Perspectiva do Desenvolvedor</strong><br>
+Você é desenvolvedor sênior há 3 anos na empresa. Está acostumado a trabalhar com múltiplos tickets simultaneamente e ser interrompido constantemente por "urgências".<br><br>
+<strong>Seu dia típico atual:</strong><br>
+• 9h: Começa ticket A (bug crítico)<br>
+• 10h: Manager pede para olhar ticket B (novo feature)<br>
+• 11h: QA encontra problema no ticket C (feito semana passada)<br>
+• 14h: Stakeholder pede estimativa para ticket D<br>
+• 16h: Volta para ticket A... onde estava mesmo?<br><br>
+<strong>Coach anuncia:</strong> "Vamos implementar Kanban!"<br><br>
+<strong>Sua reação inicial:</strong>`,
+    tag: "change-resistance",
+    choices: [
+      { text: "Ceticismo: 'Mais uma metodologia da moda'", next: "kanban-member-skeptic" },
+      { text: "Interesse: 'Pode melhorar nossa organização'", next: "kanban-member-interest" },
+      { text: "Preocupação: 'Vai burocratizar nosso trabalho'", next: "kanban-member-worry" },
+      { text: "Indiferença: 'Tanto faz, só quero programar'", next: "kanban-member-indifferent" }
+    ]
+  },
+
+  "kanban-member-interest": {
+    id: "kanban-member-interest",
+    text: `<strong>Adoção Entusiasmada</strong><br>
+Você abraça o Kanban desde o início e se torna early adopter.<br><br>
+<strong>Primeira semana com quadro Kanban:</strong><br>
+• Você move seus cards conscientemente<br>
+• Ajuda colegas a entender o fluxo<br>
+• Questiona quando vê WIP alto<br>
+• Sugere melhorias no processo<br><br>
+<strong>Situação real - Terça-feira, 15h:</strong><br>
+Manager chega: "Preciso que você dê uma olhada rápida neste bug urgente."<br>
+Você olha o quadro: já tem 3 tickets em "Desenvolvimento".<br><br>
 <strong>Sua resposta:</strong>`,
-    tag: "stakeholder-management", 
+    tag: "wip-discipline",
     choices: [
-      { text: "Mostrar métricas: bugs evitados vs velocidade", next: "kanban-lead-metrics-success" },
-      { text: "Propor aumento temporário do WIP", next: "kanban-lead-compromise" },
-      { text: "Manter política e explicar long-term benefits", next: "kanban-lead-longterm-success" }
+      { text: "'Posso ajudar, mas preciso terminar um dos atuais primeiro'", next: "kanban-member-discipline" },
+      { text: "'Claro, vou dar uma olhada rápida agora'", next: "kanban-member-multitask" },
+      { text: "'Vamos ver com o time qual prioridade no daily'", next: "kanban-member-team-decision" }
     ]
   },
 
-  "kanban-lead-metrics-success": {
-    id: "kanban-lead-metrics-success",
-    text: `<strong>Decisão Baseada em Dados</strong><br>
-Você apresentou dashboard com métricas de qualidade:<br>
-• Bugs em produção: redução de 60%<br>
-• Retrabalho: queda de 40%<br>
-• Lead time: aumento inicial, mas tendência de melhoria<br><br>
-Stakeholder convencido pelos dados objetivos.`,
-    explanation: `Excelente aplicação dos princípios Kanban:<br>
-• <strong>Medir e gerenciar o fluxo</strong> - uma das práticas fundamentais<br>
-• <strong>Tornar políticas explícitas</strong> - WIP limits baseados em dados<br>
-• <strong>Feedback loops</strong> - métricas para demonstrar valor<br>
-• <strong>Kaizen</strong> - melhoria contínua através de evidências<br><br>
-O Kanban Method enfatiza que mudanças devem ser graduais e baseadas em dados. Mostrar correlation entre WIP baixo e qualidade alta demonstra maturidade no método.`,
+  "kanban-member-discipline": {
+    id: "kanban-member-discipline",
+    text: `<strong>Disciplina no WIP</strong><br>
+Sua resposta surpreende o manager, mas você explica os benefícios do foco.<br><br>
+<strong>Você termina ticket atual em 2 horas, depois pega o "urgente".</strong><br><br>
+<strong>Descoberta:</strong> O bug "urgente" era na verdade um problema de configuração, resolvido em 15 minutos.<br><br>
+<strong>Manager comenta:</strong> "Interessante... você resolveu mais rápido porque não estava com a cabeça em outras coisas."<br><br>
+<strong>3 meses depois:</strong><br>
+Você se tornou referência em Kanban. Time pede sua opinião sobre melhorias no processo.<br><br>
+<strong>Nova situação - Retrospectiva:</strong><br>
+"Como podemos melhorar nosso fluxo ainda mais?"`,
+    tag: "continuous-improvement",
+    choices: [
+      { text: "Propor métricas de cycle time por tipo de ticket", next: "kanban-member-metrics" },
+      { text: "Sugerir classes de serviço para diferentes urgências", next: "kanban-member-classes" },
+      { text: "Implementar Definition of Ready mais rigorosa", next: "kanban-member-dor" }
+    ]
+  },
+
+  "kanban-member-classes": {
+    id: "kanban-member-classes",
+    text: `<strong>Classes de Serviço Implementadas</strong><br>
+Sua sugestão resulta em sistema mais sofisticado:<br><br>
+<strong>Classes definidas:</strong><br>
+• <strong>Expedite</strong> - Bugs críticos (SLA: 4 horas)<br>
+• <strong>Standard</strong> - Features normais (SLA: 5 dias)<br>
+• <strong>Fixed Date</strong> - Integrações com prazo (SLA: data específica)<br>
+• <strong>Intangible</strong> - Refatoração, débito técnico (sem SLA)<br><br>
+<strong>Resultado após 6 meses:</strong><br>
+• 95% dos expedites cumprindo SLA<br>
+• Previsibilidade de entrega melhorou drasticamente<br>
+• Stakeholders confiam mais no time<br>
+• Você é promovido a Tech Lead`,
+    explanation: `Implementação excepcional de conceitos avançados do Kanban:<br><br>
+• <strong>Classes of Service</strong> - diferenciação por risco e urgência<br>
+• <strong>Service Level Agreements</strong> - compromissos baseados em dados<br>
+• <strong>Risk Management</strong> - expedite para verdadeiras emergências<br>
+• <strong>Predictability</strong> - SLAs permitem planejamento confiável<br><br>
+Classes de serviço são uma prática avançada do Kanban Method que reconhece que nem todo trabalho é igual. Sua sugestão demonstra compreensão madura do sistema e liderança técnica. Esta evolução mostra como membros de equipe podem driving continuous improvement.`,
     references: [
-      "Kanban Method - David Anderson: 'Measure and manage flow'",
-      "Kanban Guide for Scrum Teams: WIP limits para melhorar qualidade",
-      "Lean Principles: redução de defeitos através de fluxo controlado"
+      "Kanban Method - David Anderson: Classes of Service",
+      "Kanban Maturity Model - Service delivery planning",
+      "Risk Management in Kanban - expedite lanes e SLAs"
     ],
     choices: [{ text: "Jogar novamente", next: "start" }]
   },
 
-  // === MEMBRO DO TIME - CENÁRIO ESPECÍFICO ===
-  "kanban-member-specific-1": {
-    id: "kanban-member-specific-1",
-    text: `<strong>Gargalo Identificado - Daily Standup</strong><br><br>
-<strong>Situação:</strong> Você é desenvolvedor e nota padrão recorrente.<br><br>
-<strong>Observação específica:</strong><br>
-• QA sempre tem fila de 8-10 tickets<br>
-• Apenas 2 testadores para 8 desenvolvedores<br>
-• Tickets voltam do QA com bugs básicos de validação<br>
-• Tempo médio em teste: 4 dias<br>
-• Desenvolvedores iniciam novos tickets enquanto QA sobrecarregado<br><br>
-<strong>Sua proposta no daily:</strong>`,
-    tag: "bottleneck-identification",
+  // === JORNADA DO GERENTE DE PRODUTO ===
+  "kanban-manager-start": {
+    id: "kanban-manager-start",
+    text: `<strong>Pressão da Liderança</strong><br>
+Como Gerente de Produto, você tem pressão de todos os lados:<br><br>
+<strong>CEO:</strong> "Por que demoramos tanto para resolver tickets simples?"<br>
+<strong>Clientes:</strong> "Quando minha solicitação será atendida?"<br>
+<strong>Time:</strong> "Não conseguimos trabalhar com tantas interrupções."<br>
+<strong>Vendas:</strong> "Precisamos daquela feature para fechar o deal."<br><br>
+<strong>Situação atual que te preocupa:</strong><br>
+• Você não tem visibilidade real do que o time está fazendo<br>
+• Estimativas são sempre ultrapassadas<br>
+• Prioridades mudam toda semana<br>
+• Relacionamento com clientes está desgastado<br><br>
+<strong>Sua maior expectativa com Kanban:</strong>`,
+    tag: "management-expectations",
     choices: [
-      { text: "Definition of Ready mais rigorosa com critérios de QA", next: "kanban-member-dor" },
-      { text: "Pair programming dev-tester em tickets críticos", next: "kanban-member-pairing" },
-      { text: "Automatizar testes de regressão básicos", next: "kanban-member-automation" },
-      { text: "Só focar na sua tarefa atual", next: "kanban-member-ignore-fail" }
+      { text: "Ter previsibilidade para commitments com clientes", next: "kanban-manager-predictability" },
+      { text: "Aumentar a velocidade de entrega do time", next: "kanban-manager-velocity" },
+      { text: "Melhorar comunicação entre áreas", next: "kanban-manager-communication" },
+      { text: "Reduzir custos operacionais", next: "kanban-manager-costs" }
     ]
   },
 
-  "kanban-member-dor": {
-    id: "kanban-member-dor",
-    text: `<strong>Definition of Ready Implementada</strong><br>
-Time adotou checklist rigorosa antes de mover para desenvolvimento:<br>
-• Casos de teste definidos<br>
-• Critérios de aceitação testáveis<br>
-• Mockups/wireframes anexados<br><br>
-<strong>Resultado Semana 2:</strong><br>
-Tickets chegam melhor preparados no QA, mas velocidade inicial caiu 30%.`,
-    explanation: `Decisão estratégica baseada em princípios sólidos:<br>
-• <strong>Qualidade Built-in</strong> - prevenir defeitos ao invés de corrigi-los<br>
-• <strong>Definition of Ready</strong> - conceito do Scrum aplicado ao fluxo Kanban<br>
-• <strong>Shift-left testing</strong> - mover qualidade para etapas anteriores<br><br>
-Esta abordagem demonstra maturidade em <strong>Lean Thinking</strong>: investir tempo na preparação para evitar retrabalho posterior. A queda inicial de velocidade é esperada e temporária quando se implementa qualidade preventiva.`,
-    references: [
-      "Lean Software Development - Mary Poppendieck: 'Build quality in'",
-      "Scrum Guide 2020 - Definition of Ready como ferramenta de qualidade",
-      "Kanban Method - Anderson: 'Improve collaboratively, evolve experimentally'"
-    ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
-  },
-
-  // === ANALISTA DE PROCESSO ===
-  "kanban-analyst-specific-1": {
-    id: "kanban-analyst-specific-1",
-    text: `<strong>Análise de Métricas - Retrospectiva Mensal</strong><br><br>
-<strong>Dados coletados:</strong><br>
-• Lead Time médio: 12 dias (meta: 7 dias)<br>
-• Cycle Time médio: 8 dias<br>
-• Throughput: 15 tickets/semana (era 20)<br>
-• Blockers: 35% dos tickets ficam bloqueados<br>
-• Principais causas: dependências externas (60%), specs incompletas (40%)<br><br>
-<strong>Sua recomendação baseada nos dados:</strong>`,
-    tag: "metrics-analysis",
+  "kanban-manager-predictability": {
+    id: "kanban-manager-predictability",
+    text: `<strong>Foco na Previsibilidade</strong><br>
+Você trabalha com o coach para implementar métricas que ajudem no planejamento.<br><br>
+<strong>Primeiro mês - Coletando dados:</strong><br>
+• Lead time médio: 12 dias (com variação alta)<br>
+• Throughput: 8-15 tickets/semana (inconsistente)<br>
+• 30% dos tickets estouram estimativa original<br><br>
+<strong>Terceiro mês - Após estabilizar WIP:</strong><br>
+• Lead time médio: 7 dias (variação baixa)<br>
+• Throughput: 12-14 tickets/semana (previsível)<br>
+• 85% dos tickets entregues no prazo esperado<br><br>
+<strong>Situação real - Cliente importante liga:</strong><br>
+"Quando posso esperar a integração com nosso sistema?"<br><br>
+<strong>Sua resposta baseada em dados Kanban:</strong>`,
+    tag: "customer-communication",
     choices: [
-      { text: "Service Level Agreement de 5 dias para dependências", next: "kanban-analyst-sla" },
-      { text: "Implementar Expedite Lane para bugs críticos", next: "kanban-analyst-expedite" },
-      { text: "Criar coluna específica para 'Waiting External'", next: "kanban-analyst-waiting-column" },
-      { text: "Focar apenas em throughput sem analisar qualidade", next: "kanban-analyst-throughput-fail" }
+      { text: "'Baseado em nosso lead time, em 7-10 dias úteis'", next: "kanban-manager-sla-success" },
+      { text: "'Vou verificar com o time e te retorno'", next: "kanban-manager-uncertainty" },
+      { text: "'Posso acelerar se for prioridade máxima'", next: "kanban-manager-priority-juggling" }
     ]
   },
 
-  "kanban-analyst-sla": {
-    id: "kanban-analyst-sla",
-    text: `<strong>SLA Implementado com Sucesso</strong><br>
-Service Level Agreement de 5 dias forçou melhoria na comunicação com stakeholders externos.<br><br>
-<strong>Resultado Month 2:</strong><br>
-• Dependências resolvidas em média 3.2 dias<br>
-• Lead time caiu para 8.5 dias<br>
-• Transparência melhorou relacionamento com clientes<br>
-• CFD (Cumulative Flow Diagram) mostra fluxo mais estável`,
-    explanation: `Implementação exemplar de práticas avançadas do Kanban:<br>
-• <strong>Service Level Expectations (SLE)</strong> - comprometimento baseado em dados históricos<br>
-• <strong>Classes of Service</strong> - diferentes SLAs para diferentes tipos de trabalho<br>
-• <strong>Managing Dependencies</strong> - uma das capabilities do Kanban Maturity Model<br>
-• <strong>Customer Focus</strong> - transparência sobre capacidade de entrega<br><br>
-Esta decisão demonstra evolução para Kanban Level 2-3, onde métricas avançadas guiam decisões estratégicas e melhoram previsibilidade.`,
+  "kanban-manager-sla-success": {
+    id: "kanban-manager-sla-success",
+    text: `<strong>Previsibilidade Conquistada</strong><br>
+Sua resposta baseada em dados reais gera confiança.<br><br>
+<strong>Cliente:</strong> "Perfeito! É a primeira vez que vocês me dão um prazo específico. Posso planejar meu projeto baseado nisso."<br><br>
+<strong>8 dias depois:</strong> Integração entregue conforme prometido.<br><br>
+<strong>6 meses depois - Resultados de negócio:</strong><br>
+• NPS de clientes subiu de 6.2 para 8.1<br>
+• Renovações de contrato: +35%<br>
+• Vendas conseguem prometer prazos realistas<br>
+• Você é reconhecido como 'manager data-driven'<br><br>
+<strong>CEO comenta:</strong><br>
+"Finalmente temos um produto que entrega o que promete!"`,
+    explanation: `Transformação exemplar de gestão reativa para gestão baseada em dados:<br><br>
+• <strong>Service Level Expectations</strong> - compromissos baseados em dados históricos<br>
+• <strong>Predictable Delivery</strong> - Kanban permitiu forecast confiável<br>
+• <strong>Customer Trust</strong> - transparência sobre capacidade real<br>
+• <strong>Business Value</strong> - métricas técnicas se traduziram em resultados comerciais<br><br>
+Esta jornada ilustra como Kanban não é apenas sobre desenvolvimento, mas sobre criar um sistema de entrega previsível que permite à empresa fazer compromissos realistas. A evolução de 'vou verificar' para 'baseado nos dados, X dias' marca maturidade no method.`,
     references: [
-      "Kanban Maturity Model - Kanban University: Service Level Expectations",
-      "Actionable Agile Metrics - Daniel Vacanti: SLE como ferramenta de previsibilidade",
-      "Kanban Method - Anderson: Classes of Service e SLA diferenciados"
+      "Actionable Agile Metrics - Daniel Vacanti: forecasting baseado em dados",
+      "Kanban Method - David Anderson: Service Level Expectations",
+      "Evidence-Based Management - métricas que importam para o negócio"
     ],
     choices: [{ text: "Jogar novamente", next: "start" }]
   }
