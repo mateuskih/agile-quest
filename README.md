@@ -140,6 +140,8 @@ AGILE ALLIANCE. _Introduction to Agile_. Disponível em: https://www.agileallian
 
 ANDERSON, David J. _Kanban: Successful Evolutionary Change for Your Technology Business_. Blue Hole Press, 2010. Disponível em: https://kanbanize.com/kanban-resources/getting-started/what-is-kanban
 
+BECK, Kent; BEEDLE, Mike; VAN BENNEKUM, Arie; COCKBURN, Alistair; CUNNINGHAM, Ward; FOWLER, Martin; GRENNING, James; HIGHSMITH, Jim; HUNT, Andrew; JEFFRIES, Ron; KERN, Jon; MARICK, Brian; MARTIN, Robert C.; MELLOR, Steve; SCHWABER, Ken; SUTHERLAND, Jeff; THOMAS, Dave. Manifesto para Desenvolvimento Ágil de Software. 2001. Disponível em: https://agilemanifesto.org/iso/ptbr/manifesto.html
+
 BECK, Kent. _Extreme Programming Explained: Embrace Change_. 2. ed. Addison-Wesley, 2004. Disponível em: https://www.agilealliance.org/glossary/xp/
 
 HUMBLE, Jez; FARLEY, David. _Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation_. Addison-Wesley, 2010. Disponível em: https://www.redhat.com/en/topics/devops/what-is-devops
