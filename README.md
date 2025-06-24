@@ -3,6 +3,8 @@
 
 Uma Aplicação Web gamificada e interativa para a aprendizagem ativa de alguns dos principais Métodos Ágeis!
 
+> https://agile-quest.vercel.app/
+
 ## [🎮] O que é um Text Adventure?
 Um Text Adventure, ou "aventura de texto", é um tipo de jogo interativo onde não existem gráficos, só texto. 
 
@@ -89,11 +91,18 @@ Logo, faz sentido que as mudanças feitas no código sejam commitadas automatica
 
 ---
 
-## [⚙️] Dependências
+### [🌐] Aplicação Web
+
+A aplicação web pode ser acessada no link:
+**https://agile-quest.vercel.app/**
+
+**Caso queira rodar o projeto localmente:**
+
+### [⚙️] Dependências
 
 O único requisito é ter o **Node.js** & **npm** instalados - [instale com o nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-## [🚀] Execução
+### [🚀] Execução Local
 
 Siga os passos:
 
@@ -111,7 +120,7 @@ npm i
 npm run dev
 ```
 
-## [🔧] Tecnologias Utilizadas
+### [🔧] Tecnologias Utilizadas
 
 Esse projeto foi construído com:
 - Vite
@@ -120,12 +129,12 @@ Esse projeto foi construído com:
 - shadcn-ui
 - Tailwind CSS
 
-## [🚧] Status
+### [🚧] Status
 ~~~md
-Projeto em desenvolvimento / aprendizado / nostalgia 😄
+Projeto em aprimoramento / aprendizado / nostalgia 😄
 ~~~
 
-## [📌] Referências
+### [📌] Referências
 
 1. [Wikipedia - Text-based game](https://en.wikipedia.org/wiki/Text-based_game)
 2. [Documentação | Lovable](https://docs.lovable.dev/introduction)
