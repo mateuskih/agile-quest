@@ -56,7 +56,7 @@ E muita gente joga os antigos até hoje, por nostalgia ou curiosidade geek.
 
 ### [↗️] Indicação!
 
-Uma comunidade ainda ativa nos dias atuais é a [textadventures.co.uk](textadventures.co.uk)
+Uma comunidade ainda ativa nos dias atuais é a [textadventures.co.uk](https://textadventures.co.uk/)
 
 No site, é possível criar, jogar e publicar *text adventure games*. 
 
