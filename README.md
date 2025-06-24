@@ -136,24 +136,28 @@ Projeto em aprimoramento / aprendizado / nostalgia 😄
 
 ### [📌] Referências
 
-AGILE ALLIANCE. _Introduction to Agile_. Disponível em: https://www.agilealliance.org/agile101/
+AGILE ALLIANCE. _Introduction to Agile_. Disponível em: <https://www.agilealliance.org/agile101/>
 
-ANDERSON, David J. _Kanban: Successful Evolutionary Change for Your Technology Business_. Blue Hole Press, 2010. Disponível em: https://kanbanize.com/kanban-resources/getting-started/what-is-kanban
+AGILE MANIFESTO | BECK, Kent; BEEDLE, Mike; VAN BENNEKUM, Arie; COCKBURN, Alistair; CUNNINGHAM, Ward; FOWLER, Martin; GRENNING, James; HIGHSMITH, Jim; HUNT, Andrew; JEFFRIES, Ron; KERN, Jon; MARICK, Brian; MARTIN, Robert C.; MELLOR, Steve; SCHWABER, Ken; SUTHERLAND, Jeff; THOMAS, Dave. Manifesto para Desenvolvimento Ágil de Software. 2001. Disponível em: <https://agilemanifesto.org/iso/ptbr/manifesto.html>
 
-BECK, Kent; BEEDLE, Mike; VAN BENNEKUM, Arie; COCKBURN, Alistair; CUNNINGHAM, Ward; FOWLER, Martin; GRENNING, James; HIGHSMITH, Jim; HUNT, Andrew; JEFFRIES, Ron; KERN, Jon; MARICK, Brian; MARTIN, Robert C.; MELLOR, Steve; SCHWABER, Ken; SUTHERLAND, Jeff; THOMAS, Dave. Manifesto para Desenvolvimento Ágil de Software. 2001. Disponível em: https://agilemanifesto.org/iso/ptbr/manifesto.html
+BECK, Kent. _Extreme Programming Explained: Embrace Change_. 2. ed. Addison-Wesley, 2004. Disponível em: <https://www.agilealliance.org/glossary/xp/>
 
-BECK, Kent. _Extreme Programming Explained: Embrace Change_. 2. ed. Addison-Wesley, 2004. Disponível em: https://www.agilealliance.org/glossary/xp/
+EXTREME PROGRAMMING. *What is XP?*. Disponível em: <http://www.extremeprogramming.org/>. Acesso em: 24 jun. 2025.
 
-HUMBLE, Jez; FARLEY, David. _Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation_. Addison-Wesley, 2010. Disponível em: https://www.redhat.com/en/topics/devops/what-is-devops
+HUMBLE, Jez; FARLEY, David. _Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation_. Addison-Wesley, 2010. Disponível em: <https://www.redhat.com/en/topics/devops/what-is-devops>
 
-LOVABLE. _Documentação oficial_. Disponível em: https://docs.lovable.dev/introduction
+KANBAN UNIVERSITY. *Kanban University: Official Kanban Resources*. Disponível em: <https://kanban.university/>
 
-MARKDOWN GUIDE. _Markdown: guia completo_. Disponível em: https://www.markdownguide.org/
+KANBANIZE | ANDERSON, David J. _Kanban: Successful Evolutionary Change for Your Technology Business_. Blue Hole Press, 2010. Disponível em: <https://kanbanize.com/kanban-resources/getting-started/what-is-kanban>
 
-OPENAI. _ChatGPT: documentação oficial_. Disponível em: https://platform.openai.com/docs
+LOVABLE. _Documentação oficial_. Disponível em: <https://docs.lovable.dev/>
 
-SCHWABER, Ken; SUTHERLAND, Jeff. _The Scrum Guide™ – The Definitive Guide to Scrum: The Rules of the Game. 2020_. Disponível em: https://scrumguides.org
+MARKDOWN GUIDE. _Markdown: guia completo_. Disponível em: <https://www.markdownguide.org/>
 
-TRELLO._What is Trello?_. Disponível em: https://trello.com/en/what-is-trello
+OPENAI. _ChatGPT: documentação oficial_. Disponível em: <https://platform.openai.com/docs>
 
-WIKIPEDIA. _Text-based game_. Disponível em: https://en.wikipedia.org/wiki/Text-based_game
+SCRUM GUIDES | SCHWABER, Ken; SUTHERLAND, Jeff. _The Scrum Guide™ – The Definitive Guide to Scrum: The Rules of the Game. 2020_. Disponível em: <https://scrumguides.org>
+
+TRELLO._What is Trello?_. Disponível em: <https://trello.com/en/what-is-trello>
+
+WIKIPEDIA. _Text-based game_. Disponível em: <https://en.wikipedia.org/wiki/Text-based_game>
