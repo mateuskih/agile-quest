@@ -136,7 +136,22 @@ Projeto em aprimoramento / aprendizado / nostalgia 😄
 
 ### [📌] Referências
 
-1. [Wikipedia - Text-based game](https://en.wikipedia.org/wiki/Text-based_game)
-2. [Documentação | Lovable](https://docs.lovable.dev/introduction)
-3. [Comunidade Lovable (Discord)](https://discord.com/invite/ha3wjN44dS)
-4. [Markdown | Guia](https://www.markdownguide.org/)
+AGILE ALLIANCE. _Introduction to Agile_. Disponível em: https://www.agilealliance.org/agile101/
+
+ANDERSON, David J. _Kanban: Successful Evolutionary Change for Your Technology Business_. Blue Hole Press, 2010. Disponível em: https://kanbanize.com/kanban-resources/getting-started/what-is-kanban
+
+BECK, Kent. _Extreme Programming Explained: Embrace Change_. 2. ed. Addison-Wesley, 2004. Disponível em: https://www.agilealliance.org/glossary/xp/
+
+HUMBLE, Jez; FARLEY, David. _Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation_. Addison-Wesley, 2010. Disponível em: https://www.redhat.com/en/topics/devops/what-is-devops
+
+LOVABLE. _Documentação oficial_. Disponível em: https://docs.lovable.dev/introduction
+
+MARKDOWN GUIDE. _Markdown: guia completo_. Disponível em: https://www.markdownguide.org/
+
+OPENAI. _ChatGPT: documentação oficial_. Disponível em: https://platform.openai.com/docs
+
+SCHWABER, Ken; SUTHERLAND, Jeff. _The Scrum Guide™ – The Definitive Guide to Scrum: The Rules of the Game. 2020_. Disponível em: https://scrumguides.org
+
+TRELLO._What is Trello?_. Disponível em: https://trello.com/en/what-is-trello
+
+WIKIPEDIA. _Text-based game_. Disponível em: https://en.wikipedia.org/wiki/Text-based_game
