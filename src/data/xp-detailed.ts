@@ -123,7 +123,7 @@ Esta jornada demonstra como XP practices se reforçam mutuamente. Pair programmi
       "Test-Driven Development by Example - Kent Beck: TDD em sistemas críticos",
       "Refactoring - Martin Fowler: refatoração segura com comprehensive tests"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-coach-peer-advocacy": {
@@ -155,7 +155,7 @@ Esta abordagem exemplifica XP value de "Respect" - respeitando resistance initia
       "Fearless Change - Mary Lynn Manns: peer advocacy patterns",
       "XP Values: Respect, Communication e learning through practice"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-coach-test-after-fail": {
@@ -186,7 +186,7 @@ O core benefit do TDD não são os tests, mas o design que emerge from test-firs
       "Growing Object-Oriented Software - Freeman/Pryce: test-first driving design",
       "XP Explained: Simple Design emerges através de TDD cycle"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-coach-roi-demo": {
@@ -238,7 +238,7 @@ Esta approach demonstrates como XP Coach must understand business context além 
       "Fearless Change - Mary Lynn Manns: executive sponsor pattern",
       "Business case for technical practices: ROI através de quality metrics"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-coach-pilot-validation": {
@@ -269,7 +269,7 @@ Esta strategy shows maturity em change management. Em high-stakes environments, 
       "XP practices: courage to experiment combined com evidence-based decisions",
       "Change management: pilot programs reducing resistance through proof"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-coach-golden-partial": {
@@ -298,7 +298,7 @@ Golden Master testing é valid strategy para legacy code, mas XP coach should id
       "Test-Driven Development by Example - Kent Beck: evolution from characterization para design tests",
       "XP coaching: pushing teams toward higher levels of technical excellence"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-coach-tdr-success": {
@@ -329,7 +329,7 @@ Esta approach demonstrates deep understanding de legacy code challenges combined
       "Refactoring - Martin Fowler: test-supported refactoring techniques",
       "XP practices applied to legacy modernization: incremental improvement"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-coach-evolution-success": {
@@ -366,7 +366,7 @@ A estratégia de Golden Master (Working Effectively with Legacy Code - Michael F
       "Working Effectively with Legacy Code - Michael Feathers: Characterization Tests (Golden Master)",
       "Refactoring - Martin Fowler: refatoração segura suportada por testes automatizados"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   // === DESENVOLVEDOR XP - CENÁRIO ESPECÍFICO ===
@@ -433,7 +433,7 @@ Esta abordagem ilustra como pair programming efetivo resolve conflitos técnicos
       "Pair Programming Illuminated - Williams & Kessler: técnicas avançadas de pairing colaborativo",
       "Test-Driven Development by Example - Kent Beck: TDD como ferramenta de design"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-dev-pingpong": {
@@ -471,7 +471,7 @@ Ping-pong pairing é advanced XP technique que combines pair programming com TDD
       "Pair Programming Illuminated: ping-pong pairing as advanced technique",
       "XP practices: structure facilitating collaboration e learning"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-dev-accept-fail": {
@@ -505,7 +505,7 @@ XP values include "Courage" specifically porque sometimes developers must stand 
       "XP Values: Sometimes conflict é necessary para protect quality",
       "Simple Design principles: fighting complexity é ongoing responsibility"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-dev-change-pair": {
@@ -538,7 +538,7 @@ Esta approach demonstrates emotional intelligence e understanding que sometimes 
       "Team dynamics: changing context can resolve personality conflicts",
       "XP practices: flexibility em pair assignments para optimize learning"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   // === CUSTOMER/PRODUCT OWNER XP ===
@@ -609,7 +609,7 @@ O XP enfatiza que o Customer deve trabalhar intimamente com developers para faze
       "User Stories Applied - Mike Cohn: técnicas avançadas de story splitting",
       "XP Values: Courage, Simplicity e Feedback através de small releases"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-customer-conservative": {
@@ -665,7 +665,7 @@ Esta journey shows que XP Customer role requires continuous learning. Initial co
       "XP Customer evolution: getting better at collaboration over time",
       "Continuous improvement through reflection e adaptation"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-customer-timeline-negotiation": {
@@ -696,7 +696,7 @@ Good XP Customer must balance business pressure com technical reality. This appr
       "Planning Game: balancing business needs com technical constraints",
       "XP Values: honesty em communication about constraints e possibilities"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-customer-negotiate-fail": {
@@ -727,7 +727,7 @@ XP iteration length é carefully designed para optimize feedback, reduce risk, e
       "XP practices: short iterations as risk management technique",
       "Planning Game: working within constraints rather que changing constraints"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   },
 
   "xp-customer-mvp": {
@@ -762,6 +762,6 @@ Esta approach exemplifies XP value de "Simplicity" - doing simplest thing que co
       "XP Values: doing simplest thing que works, then evolving",
       "Small Releases: delivering value incrementally rather que big bang"
     ],
-    choices: [{ text: "Jogar novamente", next: "start" }]
+    choices: [{ text: "Jogar novamente", next: "xp-role" }]
   }
 };
