@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Feedback } from '../types/game';
 
@@ -18,11 +17,49 @@ export const useFeedback = () => {
     }
   }, []);
 
-  // Salvar feedbacks no localStorage
+  // Salvar feedbacks no localStorage e em arquivo
   const saveFeedback = (feedback: Feedback) => {
     const updatedFeedbacks = [...feedbacks, feedback];
     setFeedbacks(updatedFeedbacks);
     localStorage.setItem('agile-quest-feedbacks', JSON.stringify(updatedFeedbacks));
+    
+    // Salvar em arquivo JSON para download
+    saveToFile(updatedFeedbacks);
+  };
+
+  // Função para salvar feedbacks em arquivo JSON
+  const saveToFile = (feedbacksData: Feedback[]) => {
+    try {
+      const dataStr = JSON.stringify(feedbacksData, null, 2);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      
+      // Criar URL temporária para o arquivo
+      const url = URL.createObjectURL(dataBlob);
+      
+      // Armazenar a URL para acesso posterior
+      localStorage.setItem('agile-quest-feedbacks-file', url);
+    } catch (error) {
+      console.error('Erro ao salvar arquivo de feedbacks:', error);
+    }
+  };
+
+  // Função para fazer download do arquivo de feedbacks
+  const downloadFeedbacks = () => {
+    try {
+      const dataStr = JSON.stringify(feedbacks, null, 2);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `agile-quest-feedbacks-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Erro ao fazer download dos feedbacks:', error);
+    }
   };
 
   // Contar feedbacks positivos por tag
@@ -52,6 +89,7 @@ export const useFeedback = () => {
     saveFeedback,
     getPositiveFeedbackCount,
     isChoiceAvailable,
-    clearFeedbacks
+    clearFeedbacks,
+    downloadFeedbacks
   };
 };

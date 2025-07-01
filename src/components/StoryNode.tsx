@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { StoryNode as StoryNodeType } from '../types/game';
 import GameCard from './GameCard';
 
@@ -87,13 +88,21 @@ const StoryNode: React.FC<StoryNodeProps> = ({
 
       {/* Botão de feedback */}
       {node.explanation && onOpenFeedback && (
-        <div className="mt-4 text-center">
+        <div className="mt-4 text-center space-y-2">
           <button
             onClick={onOpenFeedback}
             className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors text-sm"
           >
             💭 Dar feedback sobre esta experiência
           </button>
+          <div>
+            <Link 
+              to="/feedbacks" 
+              className="text-sm text-blue-600 hover:text-blue-800 underline"
+            >
+              Ver todos os feedbacks enviados
+            </Link>
+          </div>
         </div>
       )}
 
