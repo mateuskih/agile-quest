@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useFeedback } from '../hooks/useFeedback';
 import { Button } from '../components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { ArrowLeft, Download, ThumbsUp, ThumbsDown, RefreshCw } from 'lucide-react';
+import { ArrowLeft, Download, ThumbsUp, ThumbsDown, RefreshCw, Trash2 } from 'lucide-react';
 
 const Feedbacks: React.FC = () => {
   const { feedbacks, downloadFeedbacks, clearFeedbacks, refreshFeedbacks } = useFeedback();
@@ -50,7 +50,7 @@ const Feedbacks: React.FC = () => {
               </Button>
             </Link>
             <h1 className="text-3xl font-bold text-gray-800">
-              Feedbacks dos Usuários
+              Meus Feedbacks
             </h1>
           </div>
           
@@ -64,6 +64,7 @@ const Feedbacks: React.FC = () => {
               Baixar JSON
             </Button>
             <Button onClick={handleClearFeedbacks} variant="destructive">
+              <Trash2 size={16} className="mr-2" />
               Limpar Tudo
             </Button>
           </div>
@@ -72,8 +73,8 @@ const Feedbacks: React.FC = () => {
         {/* Info */}
         <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
           <p className="text-sm text-blue-700">
-            <strong>📊 Feedbacks Compartilhados:</strong> Os feedbacks são salvos automaticamente e compartilhados entre todos os usuários.
-            Use o botão "Atualizar" para ver os mais recentes.
+            <strong>📊 Seus Feedbacks:</strong> Os feedbacks ficam salvos localmente no seu navegador. 
+            Use o botão "Baixar JSON" para fazer backup dos seus dados.
           </p>
         </div>
 
@@ -103,7 +104,7 @@ const Feedbacks: React.FC = () => {
             <div className="p-8 text-center text-gray-500">
               <p className="text-lg">Nenhum feedback enviado ainda.</p>
               <p className="text-sm mt-2">
-                Os feedbacks aparecerão aqui quando os usuários enviarem suas avaliações.
+                Jogue o AgileQuest e envie feedbacks sobre suas decisões para vê-los aqui.
               </p>
             </div>
           ) : (

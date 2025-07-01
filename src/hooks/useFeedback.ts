@@ -2,71 +2,55 @@
 import { useState, useEffect } from 'react';
 import { Feedback } from '../types/game';
 
+const STORAGE_KEY = 'agile-quest-feedbacks';
+const LAST_UPDATE_KEY = 'agile-quest-feedbacks-last-update';
+
 export const useFeedback = () => {
   const [feedbacks, setFeedbacks] = useState<Feedback[]>([]);
 
-  // Carregar feedbacks do arquivo JSON
+  // Carregar feedbacks do localStorage
   useEffect(() => {
     loadFeedbacks();
+    
+    // Verificar atualizações periodicamente (simula sincronização)
+    const interval = setInterval(() => {
+      loadFeedbacks();
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
-  // Carregar feedbacks do arquivo JSON
-  const loadFeedbacks = async () => {
+  // Carregar feedbacks do localStorage
+  const loadFeedbacks = () => {
     try {
-      const response = await fetch('/feedbacks.json');
-      if (response.ok) {
-        const data = await response.json();
-        setFeedbacks(data.feedbacks || []);
+      const savedFeedbacks = localStorage.getItem(STORAGE_KEY);
+      if (savedFeedbacks) {
+        const parsed = JSON.parse(savedFeedbacks);
+        setFeedbacks(Array.isArray(parsed) ? parsed : []);
+        console.log('Feedbacks carregados:', parsed.length);
+      } else {
+        console.log('Nenhum feedback encontrado no localStorage');
       }
     } catch (error) {
       console.error('Erro ao carregar feedbacks:', error);
-      // Fallback para localStorage se o arquivo não existir
-      const savedFeedbacks = localStorage.getItem('agile-quest-feedbacks');
-      if (savedFeedbacks) {
-        try {
-          const parsed = JSON.parse(savedFeedbacks);
-          setFeedbacks(parsed);
-        } catch (error) {
-          console.error('Erro ao carregar feedbacks do localStorage:', error);
-        }
-      }
+      setFeedbacks([]);
     }
   };
 
   // Salvar feedback
-  const saveFeedback = async (feedback: Feedback) => {
-    const updatedFeedbacks = [...feedbacks, feedback];
-    setFeedbacks(updatedFeedbacks);
-    
-    // Salvar no localStorage como backup
-    localStorage.setItem('agile-quest-feedbacks', JSON.stringify(updatedFeedbacks));
-    
-    // Salvar no arquivo JSON
-    await saveFeedbacksToFile(updatedFeedbacks);
-  };
-
-  // Salvar feedbacks no arquivo JSON
-  const saveFeedbacksToFile = async (feedbacksData: Feedback[]) => {
+  const saveFeedback = (feedback: Feedback) => {
     try {
-      const dataToSave = {
-        feedbacks: feedbacksData,
-        lastUpdated: new Date().toISOString()
-      };
-
-      // Para desenvolvimento local, vamos simular salvando no localStorage
-      // e criando um arquivo para download
-      const dataStr = JSON.stringify(dataToSave, null, 2);
-      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const updatedFeedbacks = [...feedbacks, feedback];
+      setFeedbacks(updatedFeedbacks);
       
-      // Criar URL para o arquivo
-      const url = URL.createObjectURL(dataBlob);
+      // Salvar no localStorage
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedFeedbacks));
+      localStorage.setItem(LAST_UPDATE_KEY, new Date().toISOString());
       
-      // Salvar referência do arquivo
-      localStorage.setItem('agile-quest-feedbacks-file-url', url);
-      
-      console.log('Feedbacks salvos com sucesso');
+      console.log('Feedback salvo com sucesso:', feedback);
+      console.log('Total de feedbacks:', updatedFeedbacks.length);
     } catch (error) {
-      console.error('Erro ao salvar feedbacks:', error);
+      console.error('Erro ao salvar feedback:', error);
     }
   };
 
@@ -92,6 +76,8 @@ export const useFeedback = () => {
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
+      
+      console.log('Download de feedbacks iniciado');
     } catch (error) {
       console.error('Erro ao fazer download dos feedbacks:', error);
     }
@@ -114,10 +100,11 @@ export const useFeedback = () => {
   };
 
   // Limpar todos os feedbacks
-  const clearFeedbacks = async () => {
+  const clearFeedbacks = () => {
     setFeedbacks([]);
-    localStorage.removeItem('agile-quest-feedbacks');
-    await saveFeedbacksToFile([]);
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(LAST_UPDATE_KEY);
+    console.log('Todos os feedbacks foram limpos');
   };
 
   // Recarregar feedbacks
