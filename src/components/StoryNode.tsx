@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { StoryNode as StoryNodeType } from '../types/game';
 import GameCard from './GameCard';
@@ -13,24 +12,22 @@ interface StoryNodeProps {
   onOpenFeedback?: () => void;
 }
 
-const StoryNode: React.FC<StoryNodeProps> = ({ 
-  node, 
-  onChoiceSelect, 
-  isSuccess = false, 
+const StoryNode: React.FC<StoryNodeProps> = ({
+  node,
+  onChoiceSelect,
+  isSuccess = false,
   isFailure = false,
   isChoiceAvailable,
   getPositiveFeedbackCount,
   onOpenFeedback
 }) => {
   let nodeClass = "quest-card p-6 md:p-8 animate-fade-in";
-  
+
   if (isSuccess) {
     nodeClass += " success-card";
   } else if (isFailure) {
     nodeClass += " failure-card";
   }
-
-  const isEndNode = isSuccess || isFailure;
 
   // Função para renderizar texto com formatação
   const renderFormattedText = (text: string) => {
@@ -40,7 +37,6 @@ const StoryNode: React.FC<StoryNodeProps> = ({
       .replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 p-3 rounded mt-2 mb-2 overflow-x-auto"><code>$1</code></pre>')
       .replace(/`(.*?)`/g, '<code class="bg-gray-100 px-1 rounded">$1</code>')
       .replace(/• (.*?)(?=\n|$)/g, '<li>$1</li>')
-      .replace(/(\n|^)([^•\n].*?):/g, '$1<strong>$2:</strong>')
       .split('\n')
       .map(line => {
         if (line.trim() === '') return '<br>';
@@ -53,26 +49,29 @@ const StoryNode: React.FC<StoryNodeProps> = ({
 
   return (
     <div className={nodeClass}>
+      {/* Texto da história */}
       <div 
         className="story-text"
         dangerouslySetInnerHTML={{ __html: renderFormattedText(node.text) }}
       />
-      
-      {/* Explicação detalhada para nós finais */}
-      {isEndNode && node.explanation && (
+
+      {/* Explicação detalhada, sempre que existir */}
+      {node.explanation && (
         <div className="mt-6 p-4 bg-gray-50 rounded-lg border-l-4 border-blue-500">
           <h3 className="font-semibold text-gray-800 mb-2">
-            {isSuccess ? "🎯 Por que esta foi uma boa decisão:" : "❌ Por que esta decisão não foi ideal:"}
+            {isSuccess
+              ? "🎯 Por que esta foi uma boa decisão:"
+              : "❌ Por que esta decisão não foi ideal:"}
           </h3>
-          <div 
+          <div
             className="text-gray-700"
             dangerouslySetInnerHTML={{ __html: renderFormattedText(node.explanation) }}
           />
         </div>
       )}
 
-      {/* Referências aos manuais oficiais */}
-      {isEndNode && node.references && node.references.length > 0 && (
+      {/* Referências, sempre que existir */}
+      {node.references && node.references.length > 0 && (
         <div className="mt-4 p-3 bg-blue-50 rounded-lg">
           <h4 className="font-medium text-blue-800 mb-2">📚 Referências:</h4>
           <ul className="text-sm text-blue-700 space-y-1">
@@ -86,8 +85,8 @@ const StoryNode: React.FC<StoryNodeProps> = ({
         </div>
       )}
 
-      {/* Botão de feedback para nós finais */}
-      {isEndNode && onOpenFeedback && (
+      {/* Botão de feedback */}
+      {node.explanation && onOpenFeedback && (
         <div className="mt-4 text-center">
           <button
             onClick={onOpenFeedback}
@@ -98,16 +97,16 @@ const StoryNode: React.FC<StoryNodeProps> = ({
         </div>
       )}
 
-      <div className="space-y-3">
-        {node.choices.map((choice, index) => {
+      {/* Choices */}
+      <div className="space-y-3 mt-6">
+        {node.choices.map((choice, idx) => {
           const available = isChoiceAvailable(choice.requiredPositiveFeedback, choice.requiredTag);
-          
           return (
             <GameCard
-              key={`${node.id}-${index}`}
+              key={`${node.id}-${idx}`}
               choice={choice}
               onClick={onChoiceSelect}
-              index={index}
+              index={idx}
               isAvailable={available}
               requiredFeedback={choice.requiredPositiveFeedback}
               currentFeedback={getPositiveFeedbackCount(choice.requiredTag)}
