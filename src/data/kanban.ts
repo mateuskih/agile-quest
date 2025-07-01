@@ -4,430 +4,288 @@ export const kanban: StoryGraph = {
   // === INÍCIO DA JORNADA KANBAN ===
   "kanban-role": {
     id: "kanban-role",
-    text: `<strong>Munidos de Transparência</strong><br>
-Você é Engenheiro de Software em uma fintech. O time decide experimentar Kanban para encarar gargalos e reduzir ciclo de deploy.<br><br>
-<strong>Contexto inicial:</strong><br>
-• Backlog de funcionalidades e bugs misturados (80 itens)<br>
-• Deploys manuais de quase 3 horas<br>
-• Retrabalho frequente por falta de clareza<br>
-• Time sem cadência definida<br><br>
-<strong>Sua primeira ação no piloto Kanban:</strong>`,
+    text: `<strong>Cenário Real: Transformação Digital de Banco</strong><br>
+Você é Engenheiro de Software em uma fintech que compete com bancos tradicionais. A empresa decidiu adotar Kanban para otimizar fluxo de desenvolvimento e reduzir time-to-market de features críticas.<br><br>
+<strong>Contexto desafiador:</strong><br>
+• Backlog caótico: 150+ itens misturando features, bugs e débito técnico<br>
+• Deploys manuais que demoram 4+ horas e falham 30% das vezes<br>
+• Retrabalho constante por requisitos unclear<br>
+• Time de 12 pessoas sem cadência ou processo definido<br>
+• Pressão regulatória: compliance não pode ser comprometido<br>
+• Concorrência lançando features semanalmente<br><br>
+<strong>Problemas críticos identificados:</strong><br>
+• Work in Progress descontrolado (todos trabalhando em tudo)<br>
+• Gargalos invisíveis causando delays sistemáticos<br>
+• Falta de visibilidade sobre status real das entregas<br>
+• Qualidade inconsistente gerando incidents em produção<br><br>
+<strong>Sua primeira ação estratégica no piloto Kanban:</strong>`,
     choices: [
-      { text: "Construir quadro Kanban básico", next: "kanban-board-setup" },
-      { text: "Pular configurações e começar a codar", next: "kanban-no-board-fail" },
-      { text: "Reunir time para explicar Kanban", next: "kanban-team-alignment" },
-      { text: "Analisar métricas atuais antes de configurar", next: "kanban-pre-metrics" }
+      { text: "Mapear fluxo atual e construir quadro Kanban", next: "kanban-flow-mapping" },
+      { text: "Implementar WIP limits imediatamente", next: "kanban-wip-first" },
+      { text: "Pular setup e começar a trabalhar", next: "kanban-no-setup-fail" },
+      { text: "Facilitar workshop de alinhamento com time", next: "kanban-team-workshop" },
+      { text: "Analisar métricas históricas antes de mudanças", next: "kanban-baseline-metrics" }
     ]
   },
 
-  "kanban-team-alignment": {
-    id: "kanban-team-alignment",
-    text: `<strong>Alinhando Expectativas do Time</strong><br>
-Você organiza workshop de 1 hora para apresentar princípios Kanban: visualização, limites de WIP, fluxos puxados e cadências.<br><br>
-<strong>Resultados esperados:</strong><br>
-• Compreensão compartilhada do método<br>
-• Conscientização sobre mudança de hábito<br>
-• Compromisso em experimentar`,
+  "kanban-flow-mapping": {
+    id: "kanban-flow-mapping",
+    text: `<strong>Mapeamento Detalhado do Fluxo de Trabalho</strong><br>
+Você conduz sessão de value stream mapping para entender fluxo atual:<br><br>
+<strong>Fluxo atual mapeado:</strong><br>
+• <strong>Ideation:</strong> Stakeholder requests (sem filtro)<br>
+• <strong>Analysis:</strong> BA clarifica requisitos (bottleneck de 3 dias)<br>
+• <strong>Ready for Dev:</strong> Stories prontas para desenvolvimento<br>
+• <strong>In Development:</strong> Coding + unit testing<br>
+• <strong>Code Review:</strong> Peer review (outro bottleneck)<br>
+• <strong>QA Testing:</strong> Manual testing (gargalo maior - 5 dias)<br>
+• <strong>UAT:</strong> User acceptance testing<br>
+• <strong>Ready for Deploy:</strong> Approved para produção<br>
+• <strong>Done:</strong> Em produção funcionando<br><br>
+<strong>Gargalos identificados:</strong><br>
+• Analysis: 1 BA para 12 developers<br>
+• QA Testing: 2 QAs para todo o fluxo<br>
+• Code Review: Apenas 3 seniors fazem review<br><br>
+<strong>Quadro Kanban inicial construído com colunas refletindo fluxo real.</strong><br><br>
+<strong>Próxima decisão crítica:</strong>`,
+    tag: "workflow-visualization",
     choices: [
-      { text: "Configurar quadro Kanban", next: "kanban-board-setup" },
-      { text: "Definir métricas antes do quadro", next: "kanban-pre-metrics" },
-      { text: "Iniciar piloto em subset de tarefas", next: "kanban-subset-pilot" },
-      { text: "Rever objetivos do projeto", next: "kanban-project-goals" }
+      { text: "Estabelecer WIP limits baseados em capacidade", next: "kanban-capacity-based-wip" },
+      { text: "Atacar gargalos imediatamente", next: "kanban-bottleneck-attack" },
+      { text: "Implementar métricas de fluxo", next: "kanban-flow-metrics" },
+      { text: "Treinar time em políticas de pull", next: "kanban-pull-policies" }
     ]
   },
 
-  "kanban-pre-metrics": {
-    id: "kanban-pre-metrics",
-    text: `<strong>Coleta Inicial de Métricas</strong><br>
-Você coleta lead time e throughput atuais para referência futura.<br><br>
-<strong>Métricas obtidas:</strong><br>
-• Lead time médio: 12 dias<br>
-• Throughput: 8 itens/semana`,
+  "kanban-team-workshop": {
+    id: "kanban-team-workshop",
+    text: `<strong>Workshop de Alinhamento Kanban</strong><br>
+Você facilita workshop de 4 horas com time completo e stakeholders chave:<br><br>
+<strong>Agenda do workshop:</strong><br>
+• <strong>Contexto:</strong> Por que Kanban? Problemas atuais vs objetivos<br>
+• <strong>Princípios:</strong> Start with what you do, agree to pursue improvement<br>
+• <strong>Práticas:</strong> Visualização, WIP limits, flow management<br>
+• <strong>Métricas:</strong> Lead time, throughput, flow efficiency<br>
+• <strong>Cadências:</strong> Daily standup, replenishment, reviews<br><br>
+<strong>Resultados do workshop:</strong><br>
+• Time entende filosofia de flow optimization<br>
+• Acordo sobre experimentar com WIP limits<br>
+• Compromisso de medir e adaptar baseado em dados<br>
+• Stakeholders compreendem que mudança leva tempo<br><br>
+<strong>Definições estabelecidas:</strong><br>
+• Definition of Ready para cada coluna<br>
+• Definition of Done rigorosa<br>
+• Service Level Agreements para diferentes tipos de work<br><br>
+<strong>Semana seguinte - Implementação:</strong><br>
+Time está engajado mas surge resistência quando WIP limits começam a "bloquear" trabalho.<br><br>
+<strong>Como você gerencia esta resistência natural?</strong>`,
+    tag: "change-management",
     choices: [
-      { text: "Configurar quadro Kanban", next: "kanban-board-setup" },
-      { text: "Compartilhar métricas com o time", next: "kanban-share-metrics" },
-      { text: "Ignorar métricas e avançar", next: "kanban-no-metrics-fail" },
-      { text: "Discutir objetivos de melhoria", next: "kanban-project-goals" }
+      { text: "Educar sobre benefits de WIP limits com exemplos", next: "kanban-wip-education" },
+      { text: "Começar com limites altos e reduzir gradualmente", next: "kanban-gradual-wip" },
+      { text: "Focar em medir impacto antes de ajustar limits", next: "kanban-measure-first" },
+      { text: "Facilitar retrospectiva sobre blockers", next: "kanban-blocker-retro" }
     ]
   },
 
-  "kanban-share-metrics": {
-    id: "kanban-share-metrics",
-    text: `<strong>Compartilhando Métricas com o Time</strong><br>
-Você apresenta lead time e throughput atuais para o time e define metas de redução em 30%.`,
+  "kanban-capacity-based-wip": {
+    id: "kanban-capacity-based-wip",
+    text: `<strong>WIP Limits Baseados em Capacidade Real</strong><br>
+Você estabelece limites baseados na capacidade real de cada etapa do fluxo:<br><br>
+<strong>WIP Limits estabelecidos:</strong><br>
+• <strong>Analysis:</strong> 6 items (1 BA × 6 working days)<br>
+• <strong>In Development:</strong> 10 items (5 devs × 2 items simultâneos)<br>
+• <strong>Code Review:</strong> 4 items (3 seniors, review takes 1 day)<br>
+• <strong>QA Testing:</strong> 6 items (2 QAs × 3 days per item)<br>
+• <strong>UAT:</strong> 4 items (business users availability)<br><br>
+<strong>Regras de pull implementadas:</strong><br>
+• Só puxa item quando há capacidade real<br>
+• Bloqueios são sinalizados imediatamente<br>
+• Time ajuda a resolver gargalos coletivamente<br>
+• Prioridade: desbloquear antes de puxar novo work<br><br>
+<strong>Primeiros resultados (2 semanas):</strong><br>
+• Work in Progress visível e controlado<br>
+• Gargalos ficam evidentes rapidamente<br>
+• Colaboração aumenta para resolver blocks<br>
+• Lead time reduz 25% mesmo com menos WIP<br><br>
+<strong>Desafio emergente:</strong><br>
+QA continua sendo bottleneck crítico. Items acumulam antes de testing. Como você endereça este constraint sistêmico?`,
+    tag: "constraint-management",
     choices: [
-      { text: "Configurar quadro Kanban", next: "kanban-board-setup" },
-      { text: "Definir metas de WIP limit", next: "kanban-set-wip" },
-      { text: "Planejar sessões de monitoramento", next: "kanban-daily-meeting" },
-      { text: "Validar objetivos com stakeholders", next: "kanban-project-goals" }
+      { text: "Implementar shift-left testing strategy", next: "kanban-shift-left-testing" },
+      { text: "Cross-train developers em QA skills", next: "kanban-cross-training" },
+      { text: "Automatizar testes para reduzir manual work", next: "kanban-test-automation" },
+      { text: "Renegociar capacidade de QA com management", next: "kanban-capacity-negotiation" }
     ]
   },
 
-  "kanban-project-goals": {
-    id: "kanban-project-goals",
-    text: `<strong>Definindo Objetivos do Projeto</strong><br>
-Você debate com PO e stakeholders metas de negócio e técnicos: entregas mais rápidas e menos bugs.<br><br>
-<strong>Metas definidas:</strong><br>
-• Reduzir lead time em 50%<br>
-• Aumentar throughput para 15 itens/semana`,
+  "kanban-shift-left-testing": {
+    id: "kanban-shift-left-testing",
+    text: `<strong>Strategy de Shift-Left Testing</strong><br>
+Você implementa abordagem para mover testing para esquerda no fluxo:<br><br>
+<strong>Práticas implementadas:</strong><br>
+• <strong>Acceptance Criteria Details:</strong> Test scenarios definidos em Analysis<br>
+• <strong>Developer Testing:</strong> Devs testam own work antes de code review<br>
+• <strong>Automated Unit/Integration Tests:</strong> Coverage mínimo de 80%<br>
+• <strong>Test-Driven Development:</strong> Para features críticas de compliance<br>
+• <strong>Early QA Involvement:</strong> QA participa de analysis e planning<br><br>
+<strong>Impacto no fluxo (1 mês):</strong><br>
+• QA testing time reduz de 5 para 2 dias em average<br>
+• Bugs encontrados em development, não em QA<br>
+• Rework reduz 60% por better quality upstream<br>
+• QA pode focar em exploratory e user experience testing<br><br>
+<strong>Métricas de melhoria:</strong><br>
+• Lead time: 12 dias → 7 dias<br>
+• Flow efficiency: 35% → 58%<br>
+• Defect escape rate: 15% → 3%<br>
+• Team satisfaction: 6.2 → 8.1/10<br><br>
+<strong>Novo desafio surge:</strong><br>
+Success gera demanda. Stakeholders querem acelerar ainda mais. Pressão para relaxar quality gates.<br><br>
+<strong>Como você mantém sustainability sem comprometer quality?</strong>`,
     choices: [
-      { text: "Configurar quadro Kanban", next: "kanban-board-setup" },
-      { text: "Coletar métricas atuais", next: "kanban-pre-metrics" },
-      { text: "Agendar workshop Kaizen", next: "kanban-kaizen-workshop" },
-      { text: "Planejar iteração piloto", next: "kanban-subset-pilot" }
+      { text: "Demonstrar correlation entre quality e speed", next: "kanban-quality-speed-correlation" },
+      { text: "Implementar classes de serviço para priorização", next: "kanban-service-classes-advanced" },
+      { text: "Estabelecer SLAs baseados em complexity", next: "kanban-complexity-slas" }
     ]
   },
 
-  "kanban-subset-pilot": {
-    id: "kanban-subset-pilot",
-    text: `<strong>Piloto em Subconjunto de Tarefas</strong><br>
-Você seleciona 10 tickets críticos para rodar o piloto Kanban.<br><br>
-<strong>Benefícios:</strong><br>
-• Menor risco<br>
-• Feedback rápido<br>
-• Ajustes antes de expandir`,
+  "kanban-quality-speed-correlation": {
+    id: "kanban-quality-speed-correlation",
+    text: `<strong>Demonstrando Correlação Quality-Speed</strong><br>
+Você prepara análise convincente sobre relationship entre quality practices e delivery speed:<br><br>
+<strong>Dados coletados e apresentados:</strong><br>
+• <strong>Before Quality Focus:</strong> 12 dias lead time, 40% rework rate<br>
+• <strong>After Quality Focus:</strong> 7 dias lead time, 8% rework rate<br>
+• <strong>Velocity paradox:</strong> Menos WIP = mais throughput<br>
+• <strong>Cost analysis:</strong> Prevention vs correction costs<br><br>
+<strong>Demonstração visual:</strong><br>
+• CFD showing smooth flow vs chaotic flow<br>
+• Scatter plot: quality metrics vs delivery speed<br>
+• Customer satisfaction correlation com deployment frequency<br>
+• Developer happiness impact em sustainable pace<br><br>
+<strong>Business case presentation:</strong><br>
+• Quality investment ROI: 340% em 6 meses<br>
+• Reduced operational overhead liberates capacity<br>
+• Predictable delivery enables better business planning<br>
+• Risk mitigation para regulatory compliance<br><br>
+<strong>1 ano depois - Transformação completa:</strong><br>
+• Fintech reconhecida como leader em delivery excellence<br>
+• Kanban methodology replicada em outros departamentos<br>
+• Você promovido a Principal Engineering Manager<br>
+• Team case study apresentado em Kanban University conference<br>
+• Regulatory audits passam sem issues devido à quality focus`,
+    explanation: `Exemplar implementation dos princípios Kanban conforme Kanban University:<br><br>
+• <strong>Start with what you do now:</strong> Mapeou fluxo existente sem revolutionary changes<br>
+• <strong>Agree to pursue improvement:</strong> Established continuous improvement culture<br>
+• <strong>Respect current process:</strong> Evolved process incrementally baseado em evidence<br>
+• <strong>Leadership at all levels:</strong> Demonstrated technical leadership driving organizational change<br><br>
+Kanban University emphasizes que sustainable improvement comes through evolutionary change guided por metrics e customer focus. Esta jornada exemplifica como technical practices podem drive business results quando properly measured e communicated.`,
+    references: [
+      "Kanban University - Evolutionary Change: https://kanban.university",
+      "Kanban University - Flow Metrics: https://kanban.university", 
+      "Kanban University - Service Delivery: https://kanban.university"
+    ],
+    choices: [{ text: "Jogar novamente", next: "start" }]
+  },
+
+  // === EXTENDED FAILURE SCENARIOS ===
+  "kanban-no-setup-fail": {
+    id: "kanban-no-setup-fail",
+    text: `<strong>Skip Setup - Caos Perpetuado</strong><br>
+Você decide pular configuração e começar a trabalhar imediatamente:<br><br>
+<strong>Consequências imediatas:</strong><br>
+• Work permanece invisible e desorganizado<br>
+• Multiple pessoas trabalham nos mesmos items<br>
+• Priorities conflicting constantemente<br>
+• Ninguém sabe real status de entregas<br>
+• Same gargalos persistem sem visibility<br><br>
+<strong>3 meses depois:</strong><br>
+• Situation piora - mais chaos que antes<br>
+• Team frustra-se com "Kanban que não funciona"<br>
+• Management perde confidence no processo<br>
+• Stakeholders demand volta ao processo anterior<br><br>
+<strong>Lesson crítica:</strong><br>
+Kanban requires foundation - visualization é primeiro step fundamental.`,
+    explanation: `Fundamental violation dos princípios Kanban:<br><br>
+• <strong>Visualization Missing:</strong> Sem board, work permanece hidden<br>
+• <strong>No Flow Management:</strong> Impossível optimize what you can't see<br>
+• <strong>Improvement Blocked:</strong> Sem baseline, no way to measure progress<br><br>
+Kanban University emphasizes que visualization é cornerstone de flow management. Without seeing work, teams cannot identify bottlenecks, measure flow, ou make informed decisions about improvement.`,
+    references: [
+      "Kanban University - Visualization Practices: https://kanban.university",
+      "Kanban University - Getting Started: https://kanban.university"
+    ],
+    choices: [{ text: "Jogar novamente", next: "start" }]
+  },
+
+  // === ADVANCED KANBAN SCENARIOS ===
+  "kanban-service-classes-advanced": {
+    id: "kanban-service-classes-advanced",
+    text: `<strong>Implementing Advanced Service Classes</strong><br>
+Você estabelece service classes sofisticadas para different types of work:<br><br>
+<strong>Service Classes definidas:</strong><br>
+• <strong>Expedite:</strong> Critical security/compliance issues (SLA: 24h)<br>
+• <strong>Fixed Date:</strong> Regulatory deadlines (protected capacity)<br>
+• <strong>Standard:</strong> Regular feature development (normal flow)<br>
+• <strong>Intangible:</strong> Technical debt, research (20% capacity)<br><br>
+<strong>Policies implemented:</strong><br>
+• Expedite has dedicated swim lane e bypasses WIP limits<br>
+• Fixed date items have reserved capacity slots<br>
+• Standard work flows through normal Kanban system<br>
+• Intangible work has minimum allocation guarantee<br><br>
+<strong>Risk management integration:</strong><br>
+• Service classes tied to business risk levels<br>
+• SLAs based on regulatory requirements<br>
+• Escalation policies para missed SLAs<br>
+• Capacity planning considers service mix<br><br>
+<strong>Business impact (6 months):</strong><br>
+• Zero missed regulatory deadlines<br>
+• Customer-facing incidents resolved 5x faster<br>
+• Technical debt managed sustainably<br>
+• Predictable delivery enables business planning`,
     choices: [
-      { text: "Configurar quadro Kanban", next: "kanban-board-setup" },
-      { text: "Definir WIP limits para piloto", next: "kanban-set-wip" },
-      { text: "Monitorar métricas do piloto", next: "kanban-metrics-collection" },
-      { text: "Revisar resultados do piloto", next: "kanban-ops-review" }
+      { text: "Establish advanced metrics e reporting", next: "kanban-advanced-metrics" },
+      { text: "Scale Kanban para multiple teams", next: "kanban-scaling" },
+      { text: "Focus em continuous improvement", next: "kanban-kaizen-advanced" }
     ]
   },
 
-  // === FALHAS (FAIL) ===
-  "kanban-no-board-fail": {
-    id: "kanban-no-board-fail",
-    text: `<strong>Sem Quadro – Caos Continua</strong><br>
-Você ignora a configuração visual.<br><br>
-<strong>Consequências:</strong><br>
-• Tarefas se perdem no backlog<br>
-• Ninguém sabe status real<br><br>
-<strong>Lição:</strong> Visualização é primeiro pilar do Kanban.`,
-    explanation: `Sem um quadro, o trabalho permanece escondido e impede inspeção e melhoria contínua.`,
-    references: ["Kanban University – Visualização do fluxo de trabalho"],
-    choices: [ { text: "Jogar novamente", next: "kanban-role" } ]
-  },
-
-  // === CONFIGURAÇÃO DO QUADRO ===
-  "kanban-board-setup": {
-    id: "kanban-board-setup",
-    text: `<strong>Configurando o Quadro Kanban</strong><br>
-Você cria colunas: Backlog, Pronto, Em Desenvolvimento, Em Teste, Concluído.<br><br>
-<strong>Regras:</strong><br>
-• Cartões divididos por tipo (feature/bug/documentação)<br>
-• Cada cartão tem descrição, dono e estimativa de esforço (t-shirt size)<br><br>
-<strong>Próximo passo:</strong>`,
-    tag: "visualization",
-    choices: [
-      { text: "Definir limites de WIP", next: "kanban-set-wip" },
-      { text: "Criar swimlanes sem critério", next: "kanban-bad-swimlanes-fail" },
-      { text: "Adicionar políticas de pull", next: "kanban-pull-policy" },
-      { text: "Analisar métricas atuais", next: "kanban-pre-metrics" }
-    ]
-  },
-
-  "kanban-bad-swimlanes-fail": {
-    id: "kanban-bad-swimlanes-fail",
-    text: `<strong>Swimlanes Sem Critério – Confusão</strong><br>
-Você cria swimlanes sem definir critérios claros.<br><br>
-<strong>Impacto:</strong><br>
-• Cartões erram de faixa<br>
-• Priorização falha<br><br>
-<strong>Lição:</strong> Swimlanes precisam ter política definida.`,
-    explanation: `Swimlanes devem representar classes de serviço ou áreas de foco. Sem essa definição, o quadro perde clareza e utilidade.`,
-    references: ["Kanban University – Uso adequado de swimlanes"],
-    choices: [ { text: "Jogar novamente", next: "kanban-role" } ]
-  },
-
-  // === WIP LIMITS ===
-  "kanban-set-wip": {
-    id: "kanban-set-wip",
-    text: `<strong>Estabelecendo WIP Limits</strong><br>
-Você aplica limite de 4 em "Em Desenvolvimento" e 3 em "Em Teste".<br><br>
-<strong>Observação:</strong> novos cartões só entram se houver vaga.<br><br>
-<strong>Próximo passo:</strong>`,
-    tag: "wip-limits",
-    choices: [
-      { text: "Rastrear bloqueios", next: "kanban-add-blocks" },
-      { text: "Ignorar bloqueios", next: "kanban-ignore-block-fail" },
-      { text: "Rever políticas de pull", next: "kanban-pull-policy" },
-      { text: "Coletar métricas após WIP limits", next: "kanban-metrics-collection" }
-    ]
-  },
-
-  "kanban-ignore-block-fail": {
-    id: "kanban-ignore-block-fail",
-    text: `<strong>Bloqueios Ocultos – Gargalos Crescem</strong><br>
-Você não sinaliza impedimentos.<br><br>
-<strong>Impacto:</strong><br>
-• Cartões estagnados sem visibilidade<br>
-• Time não sabe onde ajudar<br><br>
-<strong>Lição:</strong> Transparência de bloqueios é essencial.`,
-    explanation: `Bloqueios não visíveis impedem inspeção. Mostrar impedimentos é necessário para manter fluxo.`,
-    references: ["Kanban University – Gerenciamento de bloqueios"],
-    choices: [ { text: "Jogar novamente", next: "kanban-role" } ]
-  },
-
-  // === BLOQUEIOS ===
-  "kanban-add-blocks": {
-    id: "kanban-add-blocks",
-    text: `<strong>Expondo Bloqueios</strong><br>
-Você adiciona coluna "Bloqueado" e etiqueta cartões impedidos.<br><br>
-<strong>Processo:</strong><br>
-• Registrar causa e quem pode resolver<br>
-• Resolver antes de puxar novo cartão<br><br>
-<strong>Próximo passo:</strong>`,
-    tag: "block-management",
-    choices: [
-      { text: "Agendar revisão diária de quadro", next: "kanban-daily-meeting" },
-      { text: "Definir SLA para bloqueios", next: "kanban-block-sla" },
-      { text: "Coletar estatísticas de bloqueios", next: "kanban-metrics-collection" },
-      { text: "Revisar políticas de pull", next: "kanban-pull-policy" }
-    ]
-  },
-
-  "kanban-block-sla": {
-    id: "kanban-block-sla",
-    text: `<strong>Definindo SLA para Desbloqueios</strong><br>
-Você estabelece que bloqueios devem ser resolvidos em até 1 dia útil.<br><br>
-<strong>Próximo passo:</strong>`,
-    choices: [
-      { text: "Agendar revisão diária de quadro", next: "kanban-daily-meeting" },
-      { text: "Revisar políticas de SLA com time", next: "kanban-team-alignment" },
-      { text: "Coletar métricas após SLA", next: "kanban-metrics-collection" },
-      { text: "Planejar workshop Kaizen", next: "kanban-kaizen-workshop" }
-    ]
-  },
-
-  "kanban-daily-meeting": {
-    id: "kanban-daily-meeting",
-    text: `<strong>Reunião Diária de Quadro</strong><br>
-Você institui um encontro de 5 minutos em frente ao quadro para:<br>
-• Revisar cartões bloqueados<br>
-• Ajustar prioridades<br>
-• Garantir fluxo contínuo<br><br>
-<strong>Próximo passo:</strong>`,
-    tag: "cadences",
-    choices: [
-      { text: "Definir políticas de pull", next: "kanban-pull-policy" },
-      { text: "Registrar feedback da reunião", next: "kanban-ops-review" },
-      { text: "Coletar métricas de frequência", next: "kanban-metrics-collection" },
-      { text: "Ajustar WIP limits conforme feedback", next: "kanban-set-wip" }
-    ]
-  },
-
-  "kanban-no-meeting-fail": {
-    id: "kanban-no-meeting-fail",
-    text: `<strong>Sem Cadência – Desalinhamento</strong><br>
-Sem reuniões regulares, o time perde sincronização.<br><br>
-<strong>Resultado:</strong><br>
-• Prioridades conflitantes<br>
-• Ausência de ownership<br><br>
-<strong>Lição:</strong> Cadências leves sustentam inspeção.`,
-    explanation: `Falta de cadências cria desalinhamento. Reuniões diárias mantêm ritmo e foco no fluxo.`,
-    references: ["Kanban University – Cadências recomendadas"],
-    choices: [ { text: "Jogar novamente", next: "kanban-role" } ]
-  },
-
-  "kanban-pull-policy": {
-    id: "kanban-pull-policy",
-    text: `<strong>Definindo Políticas de Pull</strong><br>
-Você estabelece regras claras para puxar cartões:<br>
-• Critérios de prontidão<br>
-• Checklist de revisão de código<br>
-• Aprovação de QA para mover a "Concluído"<br><br>
-<strong>Próximo passo:</strong>`,
-    tag: "policies",
-    choices: [
-      { text: "Introduzir classes de serviço", next: "kanban-classes-of-service" },
-      { text: "Ignorar classes de serviço", next: "kanban-no-classes-of-service-fail" },
-      { text: "Coletar métricas de pull", next: "kanban-metrics-collection" },
-      { text: "Registrar políticas no cartão", next: "kanban-block-sla" }
-    ]
-  },
-
-  "kanban-no-pull-fail": {
-    id: "kanban-no-pull-fail",
-    text: `<strong>Pull Arbitrário – Fluxo Instável</strong><br>
-Sem critérios, cartões são puxados sem preparação.<br><br>
-<strong>Impacto:</strong><br>
-• Retrabalho por defeitos<br>
-• Regressões frequentes<br><br>
-<strong>Lição:</strong> Políticas claras evitam surpresas.`,
-    explanation: `Sem regras definidas, o fluxo se torna imprevisível e propenso a erros.`,
-    references: ["Kanban University – Políticas de pull"],
-    choices: [ { text: "Jogar novamente", next: "kanban-role" } ]
-  },
-
-  "kanban-classes-of-service": {
-    id: "kanban-classes-of-service",
-    text: `<strong>Introduzindo Classes de Serviço</strong><br>
-Você define:<br>
-• Expedite: emergências (WIP dedicado)<br>
-• Standard: fluxo normal<br>
-• Fixed-date: entregas com data fixa<br><br>
-<strong>Próximo passo:</strong>`,
-    tag: "service-classes",
-    choices: [
-      { text: "Coletar métricas de fluxo", next: "kanban-metrics-collection" },
-      { text: "Ignorar métricas", next: "kanban-no-metrics-fail" },
-      { text: "Revisar classes com time", next: "kanban-team-alignment" },
-      { text: "Planejar workshop Kaizen", next: "kanban-kaizen-workshop" }
-    ]
-  },
-
-  "kanban-no-classes-of-service-fail": {
-    id: "kanban-no-classes-of-service-fail",
-    text: `<strong>Sem Classes de Serviço – Prioridades Perdem Sentido</strong><br>
-Você não diferencia tipos de trabalho.<br><br>
-<strong>Impacto:</strong><br>
-• Emergências bloqueiam fluxo normal<br>
-• Prazos fixos não recebem atenção necessária<br><br>
-<strong>Lição:</strong> Classes de serviço organizam prioridades.`,
-    explanation: `Sem classes de serviço, o time não sabe quais itens são mais urgentes ou críticos.`,
-    references: ["Kanban University – Classes de serviço"],
-    choices: [ { text: "Jogar novamente", next: "kanban-role" } ]
-  },
-
-  "kanban-metrics-collection": {
-    id: "kanban-metrics-collection",
-    text: `<strong>Coletando Métricas</strong><br>
-Você começa a registrar:<br>
-• Lead time por cartão<br>
-• Throughput semanal<br>
-• Taxa de bloqueios por semana<br><br>
-<strong>Próximo passo:</strong>`,
-    tag: "metrics",
-    choices: [
-      { text: "Analisar diagrama de fluxo cumulativo (CFD)", next: "kanban-cfd-analysis" },
-      { text: "Ignorar diagrama", next: "kanban-no-cfd-fail" },
-      { text: "Revisar políticas de SLA", next: "kanban-block-sla" },
-      { text: "Planejar revisão de operações", next: "kanban-ops-review" }
-    ]
-  },
-
-  "kanban-no-metrics-fail": {
-    id: "kanban-no-metrics-fail",
-    text: `<strong>Sem Métricas – Direção Cega</strong><br>
-Sem dados, não há base para decisões.<br><br>
-<strong>Consequências:</strong><br>
-• Dificuldade em prever entregas<br>
-• Melhoria não direcionada<br><br>
-<strong>Lição:</strong> Métricas fundamentam evolução.`,
-    explanation: `Sem dados, melhorias se tornam arbitrárias e não promovem ganhos sustentáveis.`,
-    references: ["Kanban University – Uso de métricas"],
-    choices: [ { text: "Jogar novamente", next: "kanban-role" } ]
-  },
-
-  "kanban-cfd-analysis": {
-    id: "kanban-cfd-analysis",
-    text: `<strong>Analisando Diagrama de Fluxo Cumulativo (CFD)</strong><br>
-Você interpreta zonas de crescimento de WIP e gargalos visuais.<br><br>
-<strong>Observações:</strong><br>
-• Faixa empinada indica acúmulo<br>
-• Platôs são sinais de gargalo`,
-    tag: "cfd",
-    choices: [
-      { text: "Planejar ações corretivas", next: "kanban-ops-review" },
-      { text: "Ajustar WIP limits", next: "kanban-set-wip" },
-      { text: "Definir workshop Kaizen", next: "kanban-kaizen-workshop" },
-      { text: "Revisar políticas de pull", next: "kanban-pull-policy" }
-    ]
-  },
-
-  "kanban-no-cfd-fail": {
-    id: "kanban-no-cfd-fail",
-    text: `<strong>Sem CFD – Gargalos Invisíveis</strong><br>
-Você não usa diagrama.<br><br>
-<strong>Impacto:</strong><br>
-• Nenhuma identificação visual de acúmulo de WIP<br><br>
-<strong>Lição:</strong> CFD é ferramenta essencial.`,
-    explanation: `Sem CFD, o time perde visão granular de como seu trabalho flui. Ferramenta crucial para inspeção.`,
-    references: ["Kanban University – Diagrama de fluxo cumulativo"],
-    choices: [ { text: "Jogar novamente", next: "kanban-role" } ]
-  },
-
-  "kanban-ops-review": {
-    id: "kanban-ops-review",
-    text: `<strong>Revisão de Operações Mensal</strong><br>
-Você reúne stakeholders para:<br>
-• Analisar métricas e CFD<br>
-• Identificar gargalos sistêmicos<br>
-• Planejar melhorias estruturais`,
-    choices: [
-      { text: "Facilitar workshop Kaizen", next: "kanban-kaizen-workshop" },
-      { text: "Ajustar políticas de SLA", next: "kanban-block-sla" },
-      { text: "Revisar classes de serviço", next: "kanban-classes-of-service" },
-      { text: "Revisar WIP limits", next: "kanban-set-wip" }
-    ]
-  },
-
-  "kanban-no-ops-fail": {
-    id: "kanban-no-ops-fail",
-    text: `<strong>Sem Revisão de Operações – Melhoria Seca</strong><br>
-Você não faz reuniões formais de análise.<br><br>
-<strong>Impacto:</strong><br>
-• Mudanças isoladas sem impacto global<br>
-• Gargalos persistentes`,
-    explanation: `Ignorar revisões de operações impede a coordenação de melhorias de alto nível, mantendo o time fragmentado.`,
-    references: ["Kanban University – Revisão de operações"],
-    choices: [ { text: "Jogar novamente", next: "kanban-role" } ]
-  },
-
-  "kanban-kaizen-workshop": {
-    id: "kanban-kaizen-workshop",
-    text: `<strong>Workshop Kaizen</strong><br>
-Você facilita sessão de melhorias:<br>
-• Brainstorm de gargalos<br>
-• Ações pequenas e rápidas<br>
-• Responsáveis e prazos curtos`,
-    choices: [
-      { text: "Implementar melhorias sugeridas", next: "kanban-implement-changes" },
-      { text: "Documentar lições aprendidas", next: "kanban-document-learnings" },
-      { text: "Celebrar resultados", next: "kanban-conclusion-success" },
-      { text: "Reavaliar metas iniciais", next: "kanban-project-goals" }
-    ]
-  },
-
-  "kanban-implement-changes": {
-    id: "kanban-implement-changes",
-    text: `<strong>Implementando Melhorias</strong><br>
-Você aplica duas melhorias prioritárias:<br>
-• Ajuste de WIP limits baseados em CFD<br>
-• Automação de notificações de bloqueios`,
-    choices: [
-      { text: "Coletar métricas pós-implementação", next: "kanban-metrics-collection" },
-      { text: "Agendar nova revisão de operações", next: "kanban-ops-review" },
-      { text: "Documentar lições aprendidas", next: "kanban-document-learnings" },
-      { text: "Celebrar conquistas", next: "kanban-conclusion-success" }
-    ]
-  },
-
-  "kanban-document-learnings": {
-    id: "kanban-document-learnings",
-    text: `<strong>Documentando Lições Aprendidas</strong><br>
-Você registra no wiki as práticas que funcionaram e erros a evitar para futuros ciclos.`,
-    choices: [
-      { text: "Compartilhar com stakeholders", next: "kanban-ops-review" },
-      { text: "Atualizar políticas de pull", next: "kanban-pull-policy" },
-      { text: "Revisar quadro Kanban", next: "kanban-board-setup" },
-      { text: "Concluir piloto com sucesso", next: "kanban-conclusion-success" }
-    ]
-  },
-
-  "kanban-conclusion-success": {
-    id: "kanban-conclusion-success",
-    text: `<strong>Seu Piloto Kanban Foi um Sucesso!</strong><br>
-Agora seu time conta com:<br>
-• Fluxo visual claro e controlado<br>
-• WIP limits respeitados<br>
-• Bloqueios gerenciados imediatamente<br>
-• Cadências leves e objetivas<br>
-• Políticas de pull e classes de serviço definidas<br>
-• Métricas e CFD guiando melhorias<br>
-• Cultura de Kaizen estabelecida`,
-    explanation: `Você aplicou integralmente os princípios e práticas do método Kanban, gerando um sistema de entrega previsível e sustentável.`,
-    references: ["Kanban University – Princípios e práticas Kanban"],
-    choices: [ { text: "Jogar novamente", next: "kanban-role" } ]
+  "kanban-advanced-metrics": {
+    id: "kanban-advanced-metrics",
+    text: `<strong>Advanced Metrics e Analytics</strong><br>
+Você implementa sophisticated measurement system para drive continuous improvement:<br><br>
+<strong>Metrics dashboard implementado:</strong><br>
+• <strong>Flow Metrics:</strong> Lead time, cycle time, throughput por service class<br>
+• <strong>Quality Metrics:</strong> Defect rate, escape rate, customer satisfaction<br>
+• <strong>Predictability:</strong> SLA compliance, estimation accuracy<br>
+• <strong>Team Health:</strong> WIP age, blocked time, team satisfaction<br>
+• <strong>Business Value:</strong> Value delivery rate, ROI por initiative<br><br>
+<strong>Advanced analytics capabilities:</strong><br>
+• Monte Carlo simulations para delivery forecasting<br>
+• Statistical process control para identify trends<br>
+• Correlation analysis between practices e outcomes<br>
+• Automated alerting para SLA risks<br><br>
+<strong>Decision-making transformation:</strong><br>
+• Data-driven capacity planning<br>
+• Evidence-based process improvements<br>
+• Predictive resource allocation<br>
+• Risk-informed prioritization<br><br>
+<strong>Organizational impact:</strong><br>
+• Fintech becomes industry benchmark para delivery excellence<br>
+• Metrics methodology licensed para other companies<br>
+• You become recognized expert em flow-based management<br>
+• Approach scales para entire organization`,
+    explanation: `Masterful implementation of advanced Kanban practices:<br><br>
+• <strong>Evolutionary Approach:</strong> Built sophisticated system incrementally<br>
+• <strong>Evidence-Based Management:</strong> Decisions driven by data, not opinions<br>
+• <strong>Service Orientation:</strong> Different work types managed appropriately<br>
+• <strong>Continuous Improvement:</strong> Metrics enable ongoing optimization<br><br>
+This represents mature Kanban implementation que goes beyond basic practices para create competitive advantage through superior flow management.`,
+    references: [
+      "Kanban University - Advanced Metrics: https://kanban.university",
+      "Kanban University - Service Classes: https://kanban.university",
+      "Kanban University - Flow-Based Management: https://kanban.university"
+    ],
+    choices: [{ text: "Jogar novamente", next: "start" }]
   }
 };
