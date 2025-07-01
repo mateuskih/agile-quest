@@ -1,5 +1,5 @@
 # </*Agile Quest*> 📜
-> Uma aventura em texto (_text adventure_) sobre os **Métodos Ágeis**: Scrum, Kanban e XP (_Xtreme Programming_) ...
+> Uma aventura em texto (_text adventure_) sobre os **Métodos Ágeis**: Scrum, Kanban e XP (_Xtreme Programming_)
 
 Uma Aplicação Web gamificada e interativa para a aprendizagem ativa de alguns dos principais Métodos Ágeis!
 
