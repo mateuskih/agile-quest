@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { useFeedback } from '../hooks/useFeedback';
 import { Button } from '../components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/ui/table';
-import { ArrowLeft, Download, ThumbsUp, ThumbsDown } from 'lucide-react';
+import { ArrowLeft, Download, ThumbsUp, ThumbsDown, RefreshCw } from 'lucide-react';
 
 const Feedbacks: React.FC = () => {
-  const { feedbacks, downloadFeedbacks, clearFeedbacks } = useFeedback();
+  const { feedbacks, downloadFeedbacks, clearFeedbacks, refreshFeedbacks } = useFeedback();
 
   const formatDate = (timestamp: number) => {
     return new Date(timestamp).toLocaleString('pt-BR');
@@ -33,6 +33,10 @@ const Feedbacks: React.FC = () => {
     }
   };
 
+  const handleRefresh = () => {
+    refreshFeedbacks();
+  };
+
   return (
     <div className="min-h-screen p-4 md:p-8 bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="max-w-6xl mx-auto">
@@ -51,6 +55,10 @@ const Feedbacks: React.FC = () => {
           </div>
           
           <div className="flex gap-2">
+            <Button onClick={handleRefresh} variant="outline">
+              <RefreshCw size={16} className="mr-2" />
+              Atualizar
+            </Button>
             <Button onClick={downloadFeedbacks} variant="outline">
               <Download size={16} className="mr-2" />
               Baixar JSON
@@ -59,6 +67,14 @@ const Feedbacks: React.FC = () => {
               Limpar Tudo
             </Button>
           </div>
+        </div>
+
+        {/* Info */}
+        <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+          <p className="text-sm text-blue-700">
+            <strong>📊 Feedbacks Compartilhados:</strong> Os feedbacks são salvos automaticamente e compartilhados entre todos os usuários.
+            Use o botão "Atualizar" para ver os mais recentes.
+          </p>
         </div>
 
         {/* Stats */}
@@ -102,7 +118,9 @@ const Feedbacks: React.FC = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {feedbacks.map((feedback, index) => (
+                {feedbacks
+                  .sort((a, b) => b.timestamp - a.timestamp)
+                  .map((feedback, index) => (
                   <TableRow key={index}>
                     <TableCell className="font-mono text-sm">
                       {formatDate(feedback.timestamp)}
