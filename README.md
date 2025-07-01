@@ -56,7 +56,7 @@ E muita gente joga os antigos até hoje, por nostalgia ou curiosidade geek.
 
 ### [↗️] Indicação!
 
-Uma comunidade ainda ativa nos dias atuais é a [textadventures.co.uk](textadventures.co.uk)
+Uma comunidade ainda ativa nos dias atuais é a [textadventures.co.uk](https://textadventures.co.uk/)
 
 No site, é possível criar, jogar e publicar *text adventure games*. 
 
@@ -136,7 +136,28 @@ Projeto em aprimoramento / aprendizado / nostalgia 😄
 
 ### [📌] Referências
 
-1. [Wikipedia - Text-based game](https://en.wikipedia.org/wiki/Text-based_game)
-2. [Documentação | Lovable](https://docs.lovable.dev/introduction)
-3. [Comunidade Lovable (Discord)](https://discord.com/invite/ha3wjN44dS)
-4. [Markdown | Guia](https://www.markdownguide.org/)
+AGILE ALLIANCE. _Introduction to Agile_. Disponível em: <https://www.agilealliance.org/agile101/>
+
+AGILE MANIFESTO | BECK, Kent; BEEDLE, Mike; VAN BENNEKUM, Arie; COCKBURN, Alistair; CUNNINGHAM, Ward; FOWLER, Martin; GRENNING, James; HIGHSMITH, Jim; HUNT, Andrew; JEFFRIES, Ron; KERN, Jon; MARICK, Brian; MARTIN, Robert C.; MELLOR, Steve; SCHWABER, Ken; SUTHERLAND, Jeff; THOMAS, Dave. Manifesto para Desenvolvimento Ágil de Software. 2001. Disponível em: <https://agilemanifesto.org/iso/ptbr/manifesto.html>
+
+BECK, Kent. _Extreme Programming Explained: Embrace Change_. 2. ed. Addison-Wesley, 2004. Disponível em: <https://www.agilealliance.org/glossary/xp/>
+
+EXTREME PROGRAMMING. *What is XP?*. Disponível em: <http://www.extremeprogramming.org/>. Acesso em: 24 jun. 2025.
+
+HUMBLE, Jez; FARLEY, David. _Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation_. Addison-Wesley, 2010. Disponível em: <https://www.redhat.com/en/topics/devops/what-is-devops>
+
+KANBAN UNIVERSITY. *Kanban University: Official Kanban Resources*. Disponível em: <https://kanban.university/>
+
+KANBANIZE | ANDERSON, David J. _Kanban: Successful Evolutionary Change for Your Technology Business_. Blue Hole Press, 2010. Disponível em: <https://kanbanize.com/kanban-resources/getting-started/what-is-kanban>
+
+LOVABLE. _Documentação oficial_. Disponível em: <https://docs.lovable.dev/>
+
+MARKDOWN GUIDE. _Markdown: guia completo_. Disponível em: <https://www.markdownguide.org/>
+
+OPENAI. _ChatGPT: documentação oficial_. Disponível em: <https://platform.openai.com/docs>
+
+SCRUM GUIDES | SCHWABER, Ken; SUTHERLAND, Jeff. _The Scrum Guide™ – The Definitive Guide to Scrum: The Rules of the Game. 2020_. Disponível em: <https://scrumguides.org>
+
+TRELLO._What is Trello?_. Disponível em: <https://trello.com/en/what-is-trello>
+
+WIKIPEDIA. _Text-based game_. Disponível em: <https://en.wikipedia.org/wiki/Text-based_game>
